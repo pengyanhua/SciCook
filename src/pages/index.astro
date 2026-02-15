@@ -1,0 +1,198 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Card from "@/components/Card.astro";
+
+// Hero 代码片段 (避免 JSX 花括号冲突)
+const heroCode = `<span class="text-brand-400">import</span> { 渗透压, 美拉德反应 } <span class="text-brand-400">from</span> <span class="text-amber-400">"物理化学"</span>;
+
+<span class="text-brand-400">function</span> <span class="text-blue-400">炒芹菜</span>(芹菜: <span class="text-amber-400">300g</span>) {
+  <span class="text-gray-600">// step 1: 利用渗透压预处理</span>
+  <span class="text-brand-400">const</span> 预处理 = 渗透压.腌制(芹菜, {
+    盐: 芹菜.重量 * <span class="text-amber-400">0.01</span>,  <span class="text-gray-600">// 1%盐浓度</span>
+    油: <span class="text-amber-400">5</span>ml,                <span class="text-gray-600">// 疏水保护层</span>
+    时间: <span class="text-amber-400">600</span>s              <span class="text-gray-600">// 10分钟</span>
+  });
+  <span class="text-brand-400">return</span> 猛火快炒(预处理, { 温度: <span class="text-amber-400">220</span>°C });
+}`;
+
+// MVP 原理文章
+const principles = [
+  {
+    title: "脆嫩芹菜的秘密",
+    description: "用渗透压和油膜保护，让每一根纤维都保持完美脆度。",
+    href: "/kernel/osmotic-pressure-celery",
+    field: "physics" as const,
+    tag: "渗透压",
+  },
+  {
+    title: '肉类"上浆"的底层逻辑',
+    description: "淀粉糊化 + 蛋白质屏障，构建双重热力防线。",
+    href: "/kernel/meat-velveting",
+    field: "chemistry" as const,
+    tag: "水合反应",
+  },
+  {
+    title: "热锅快炒的叶绿素保卫战",
+    description: "为什么猛火快炒能让青菜保持翠绿？答案在脱镁反应。",
+    href: "/kernel/chlorophyll-protection",
+    field: "biology" as const,
+    tag: "叶绿素",
+  },
+  {
+    title: "奶白鱼汤的胶体科学",
+    description: "大火出白汤，小火出清汤。这是一道经典的乳化实验。",
+    href: "/kernel/fish-soup-emulsion",
+    field: "chemistry" as const,
+    tag: "乳化反应",
+  },
+];
+
+const modules = [
+  {
+    id: "MOD_01",
+    name: "原理层",
+    eng: "Kernel",
+    desc: "美拉德反应、焦糖化、乳化、变性……核心科学概念解析。",
+    href: "/kernel/",
+  },
+  {
+    id: "MOD_02",
+    name: "参数层",
+    eng: "Variables",
+    desc: "食材理化数据库：烟点、含水量、纤维密度，一切皆可量化。",
+    href: "/variables/",
+  },
+  {
+    id: "MOD_03",
+    name: "菜谱库",
+    eng: "Algorithms",
+    desc: "精确到克、秒、°C 的标准作业程序 (SOP)。",
+    href: "/recipes/",
+  },
+  {
+    id: "MOD_04",
+    name: "调试区",
+    eng: "Debugging",
+    desc: "烹饪失败？这里有 Root Cause Analysis。",
+    href: "/debug/",
+  },
+];
+---
+
+<BaseLayout title="首页">
+  <!-- Hero Section -->
+  <section class="relative overflow-hidden">
+    <!-- Background grid effect -->
+    <div class="absolute inset-0 bg-[linear-gradient(rgba(20,184,166,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(20,184,166,0.03)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+
+    <div class="relative mx-auto max-w-6xl px-6 py-24 sm:py-32">
+      <div class="max-w-3xl">
+        <!-- Terminal-style badge -->
+        <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-800 bg-gray-900/80 px-4 py-1.5">
+          <span class="h-2 w-2 rounded-full bg-brand-500 animate-pulse"></span>
+          <span class="font-mono text-xs text-gray-400">Cooking as Coding</span>
+        </div>
+
+        <h1 class="text-4xl font-bold tracking-tight text-gray-50 sm:text-5xl lg:text-6xl">
+          理科生
+          <span class="text-brand-400">下厨房</span>
+        </h1>
+
+        <p class="mt-6 text-xl text-gray-400 leading-relaxed">
+          拒绝玄学，烹饪是一门精确的科学。<br />
+          用物理、化学、生物学原理，<span class="text-gray-200">解构</span>、<span class="text-gray-200">量化</span>、<span class="text-gray-200">重构</span>每一道菜。
+        </p>
+
+        <!-- CTA -->
+        <div class="mt-10 flex flex-wrap gap-4">
+          <a
+            href="/kernel/"
+            class="inline-flex items-center gap-2 rounded-lg bg-brand-600 px-6 py-3 text-sm font-semibold text-white hover:bg-brand-500 transition-colors"
+          >
+            探索原理层
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a
+            href="/recipes/"
+            class="inline-flex items-center gap-2 rounded-lg border border-gray-700 px-6 py-3 text-sm font-semibold text-gray-300 hover:border-gray-600 hover:text-gray-100 transition-colors"
+          >
+            浏览菜谱库
+          </a>
+        </div>
+      </div>
+
+      <!-- Code snippet decoration -->
+      <div class="mt-16 rounded-xl border border-gray-800 bg-gray-900/50 p-6 font-mono text-sm">
+        <div class="flex items-center gap-2 mb-4">
+          <span class="h-3 w-3 rounded-full bg-red-500/60"></span>
+          <span class="h-3 w-3 rounded-full bg-yellow-500/60"></span>
+          <span class="h-3 w-3 rounded-full bg-green-500/60"></span>
+          <span class="ml-3 text-xs text-gray-600">recipe.cook</span>
+        </div>
+        <pre class="text-gray-400"><code set:html={heroCode} /></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- Principles Section -->
+  <section class="mx-auto max-w-6xl px-6 py-20">
+    <div class="mb-10">
+      <h2 class="text-2xl font-bold text-gray-100">
+        <span class="font-mono text-brand-500">#</span> 底层原理精选
+      </h2>
+      <p class="mt-2 text-gray-500">用科学解释传统经验，每一个 "为什么" 都有答案。</p>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      {principles.map((p) => (
+        <Card
+          title={p.title}
+          description={p.description}
+          href={p.href}
+          field={p.field}
+          tag={p.tag}
+        />
+      ))}
+    </div>
+  </section>
+
+  <!-- Modules Section -->
+  <section class="border-t border-gray-800">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-100">
+          <span class="font-mono text-brand-500">#</span> 系统架构
+        </h2>
+        <p class="mt-2 text-gray-500">像操作系统一样，分层组织烹饪知识。</p>
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {modules.map((m) => (
+          <a
+            href={m.href}
+            class="group rounded-xl border border-gray-800 bg-gray-900/30 p-5 transition-all hover:border-brand-500/40 hover:bg-gray-900/60"
+          >
+            <div class="font-mono text-xs text-gray-600 mb-2">{m.id}</div>
+            <h3 class="text-lg font-semibold text-gray-200 group-hover:text-brand-400 transition-colors">
+              {m.name}
+            </h3>
+            <div class="font-mono text-xs text-gray-600 mb-3">{m.eng}</div>
+            <p class="text-sm text-gray-500">{m.desc}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Slogan -->
+  <section class="border-t border-gray-800 bg-gray-900/30">
+    <div class="mx-auto max-w-6xl px-6 py-16 text-center">
+      <p class="font-mono text-sm text-gray-600 mb-2">// manifesto</p>
+      <blockquote class="text-2xl font-bold text-gray-300 sm:text-3xl">
+        "拒绝玄学，烹饪是一门<span class="text-brand-400">精确的科学</span>。"
+      </blockquote>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,44 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Card from "@/components/Card.astro";
+import { getCollection } from "astro:content";
+
+const principles = await getCollection("principles");
+principles.sort((a, b) => b.data.date.localeCompare(a.data.date));
+---
+
+<BaseLayout title="原理层 / Kernel" description="用物理、化学、生物学解释烹饪的底层逻辑">
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <!-- Header -->
+    <div class="mb-10">
+      <div class="font-mono text-xs text-gray-600 mb-2">MOD_01</div>
+      <h1 class="text-3xl font-bold text-gray-50 sm:text-4xl">
+        原理层 <span class="text-brand-400">Kernel</span>
+      </h1>
+      <p class="mt-3 text-lg text-gray-400">
+        美拉德反应、焦糖化、乳化、变性……核心科学概念解析。<br />
+        理解了 "为什么"，才能举一反三。
+      </p>
+    </div>
+
+    <!-- Filter tags -->
+    <div class="mb-8 flex flex-wrap gap-2">
+      <span class="tag-physics rounded-full px-3 py-1 text-xs font-mono">物理 Physics</span>
+      <span class="tag-chemistry rounded-full px-3 py-1 text-xs font-mono">化学 Chemistry</span>
+      <span class="tag-biology rounded-full px-3 py-1 text-xs font-mono">生物 Biology</span>
+    </div>
+
+    <!-- Article Grid -->
+    <div class="grid gap-4 sm:grid-cols-2">
+      {principles.map((article) => (
+        <Card
+          title={article.data.title}
+          description={article.data.description}
+          href={`/kernel/${article.id.replace(/\.mdx?$/, "")}`}
+          field={article.data.field}
+          tag={article.data.tags[0]}
+        />
+      ))}
+    </div>
+  </div>
+</BaseLayout>

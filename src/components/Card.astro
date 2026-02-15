@@ -1,0 +1,51 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  href: string;
+  field?: "physics" | "chemistry" | "biology";
+  tag?: string;
+}
+
+const { title, description, href, field, tag } = Astro.props;
+
+const fieldStyles: Record<string, string> = {
+  physics: "border-blue-500/30 hover:border-blue-500/60",
+  chemistry: "border-amber-500/30 hover:border-amber-500/60",
+  biology: "border-green-500/30 hover:border-green-500/60",
+};
+
+const tagStyles: Record<string, string> = {
+  physics: "tag-physics",
+  chemistry: "tag-chemistry",
+  biology: "tag-biology",
+};
+
+const borderClass = field ? fieldStyles[field] : "border-gray-800 hover:border-brand-500/50";
+---
+
+<a
+  href={href}
+  class:list={[
+    "group block rounded-xl border bg-gray-900/50 p-6 transition-all hover:bg-gray-900",
+    borderClass,
+  ]}
+>
+  {field && tag && (
+    <span class:list={["inline-block rounded-full px-2.5 py-0.5 text-xs font-mono font-medium mb-3", tagStyles[field]]}>
+      {tag}
+    </span>
+  )}
+  <h3 class="text-lg font-semibold text-gray-100 group-hover:text-brand-400 transition-colors">
+    {title}
+  </h3>
+  <p class="mt-2 text-sm text-gray-400 line-clamp-2">
+    {description}
+  </p>
+  <span class="mt-4 inline-flex items-center gap-1 text-xs font-mono text-gray-600 group-hover:text-brand-500 transition-colors">
+    阅读更多
+    <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+  </span>
+</a>

@@ -1,0 +1,57 @@
+---
+title: "蒜蓉脆炒芹菜"
+description: "利用渗透压预处理 + 大火快炒，实现最大化脆度的标准化流程。"
+category: "快炒"
+difficulty: 1
+scienceTags: ["渗透压", "疏水层", "美拉德反应"]
+date: "2026-02-15"
+servings: 2
+totalTimeSec: 900
+peakTempCelsius: 220
+ingredients:
+  - { name: "芹菜", amountG: 300, role: "主料", notes: "取茎部，叶另用" }
+  - { name: "大蒜", amountG: 15, role: "辅料", notes: "3-4瓣，切末" }
+  - { name: "食盐", amountG: 3, unit: "g", role: "调味", notes: "腌制用，芹菜重量×1%" }
+  - { name: "食用油", amountG: 5, unit: "ml", role: "调味", notes: "腌制用，形成疏水层" }
+  - { name: "食用油", amountG: 15, unit: "ml", role: "调味", notes: "炒制用" }
+  - { name: "食盐", amountG: 2, unit: "g", role: "调味", notes: "炒制调味" }
+  - { name: "白胡椒粉", amountG: 1, unit: "g", role: "调味" }
+steps:
+  - action: "芹菜洗净，切斜段 (长度 3cm)"
+    scienceNote: "斜切增大受热面积，加速热传导"
+  - action: "切好的芹菜加入 3g 盐 + 5ml 油，拌匀腌制"
+    durationSec: 600
+    scienceNote: "NaCl 制造高渗环境→细胞适度失水→纤维致密化；油膜形成疏水保护层"
+  - action: "腌制后冲洗沥干，去除多余盐分"
+    durationSec: 60
+  - action: "大蒜切末备用"
+  - action: "锅烧热，加入 15ml 食用油，油温至微微冒烟"
+    tempCelsius: 200
+    scienceNote: "油温达到烟点附近，确保足够的热能输入"
+  - action: "下蒜末，爆香至微黄"
+    durationSec: 10
+    tempCelsius: 180
+    scienceNote: "大蒜中的蒜氨酸在热力下转化为大蒜素，产生特征香气"
+  - action: "倒入芹菜，大火翻炒"
+    durationSec: 90
+    tempCelsius: 220
+    scienceNote: "高温快速传热，在纤维完全软化前完成烹饪"
+  - action: "加入 2g 盐、白胡椒粉，翻炒均匀，出锅"
+    durationSec: 15
+relatedPrinciples: ["osmotic-pressure-celery"]
+---
+
+## 科学解析
+
+这道菜的核心技术是**渗透压预处理**。通过腌制步骤让芹菜细胞适度脱水，配合油膜保护，确保在高温快炒过程中保持最佳脆度。
+
+详细原理请参阅：[脆嫩芹菜的秘密：渗透压的力量](/kernel/osmotic-pressure-celery)
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 炒完太咸 | 腌制后未冲洗 | 必须冲洗沥干 |
+| 还是偏软 | 火力不够 / 炒太久 | 确保锅温 200°C+，控制在 90s 内 |
+| 出水太多 | 沥干不彻底 | 甩干水分再下锅 |
+| 颜色发黄 | 炒制时间过长 | 参考叶绿素保护原理，缩短时间 |

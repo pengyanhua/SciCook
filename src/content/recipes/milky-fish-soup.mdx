@@ -1,0 +1,61 @@
+---
+title: "奶白鲫鱼豆腐汤"
+description: "利用乳化原理，用大火滚沸实现完美奶白色的经典鱼汤。"
+category: "炖煮"
+difficulty: 2
+scienceTags: ["乳化反应", "胶原蛋白", "丁达尔效应"]
+date: "2026-02-15"
+servings: 3
+totalTimeSec: 3000
+peakTempCelsius: 100
+ingredients:
+  - { name: "鲫鱼", amountG: 400, role: "主料", notes: "处理干净，两面划刀" }
+  - { name: "嫩豆腐", amountG: 300, role: "主料", notes: "切 2cm 方块" }
+  - { name: "姜", amountG: 15, role: "辅料", notes: "切片，4-5片" }
+  - { name: "葱", amountG: 20, role: "辅料", notes: "葱白段 + 葱花分开" }
+  - { name: "食用油", amountG: 20, unit: "ml", role: "调味" }
+  - { name: "料酒", amountG: 15, unit: "ml", role: "调味" }
+  - { name: "食盐", amountG: 5, unit: "g", role: "调味", notes: "出锅前加" }
+  - { name: "沸水", amountG: 1200, unit: "ml", role: "辅料", notes: "必须是沸水" }
+steps:
+  - action: "鲫鱼处理干净，两面各划 3 刀，用厨房纸吸干表面水分"
+    scienceNote: "去除表面水分防止煎制时油爆，划刀增大热传导面积"
+  - action: "锅烧热加油，中火将鲫鱼两面煎至金黄"
+    durationSec: 300
+    tempCelsius: 170
+    scienceNote: "美拉德反应产生风味物质，同时使鱼表面蛋白质凝固，防止后续炖煮时碎裂"
+  - action: "加入姜片、葱白段，煸出香味"
+    durationSec: 30
+  - action: "沿锅边淋入料酒"
+    durationSec: 10
+    scienceNote: "料酒中的乙醇蒸发时带走腥味分子（三甲胺等）"
+  - action: "一次性加入 1200ml 沸水，转大火"
+    tempCelsius: 100
+    scienceNote: "必须加沸水！冷水会使蛋白质收缩，影响胶原蛋白溶出和乳化效率"
+  - action: "大火持续滚沸炖煮"
+    durationSec: 1500
+    tempCelsius: 100
+    scienceNote: "剧烈沸腾提供机械乳化力，将脂肪打散成微米级油滴；明胶蛋白包裹油滴形成稳定 O/W 乳液"
+  - action: "加入豆腐块，继续大火炖煮"
+    durationSec: 600
+    tempCelsius: 100
+  - action: "出锅前加入 5g 盐，撒葱花"
+    durationSec: 30
+    scienceNote: "过早加盐会使蛋白质过度收缩，减少明胶溶出量，影响奶白效果"
+relatedPrinciples: ["fish-soup-emulsion"]
+---
+
+## 科学解析
+
+这道汤的关键在于**持续的大火滚沸**。沸腾产生的机械力将脂肪分散成微小油滴，而从鱼骨鱼皮中溶出的明胶蛋白充当天然乳化剂，将汤变成稳定的奶白色乳液。
+
+详细原理请参阅：[奶白鱼汤的胶体科学](/kernel/fish-soup-emulsion)
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 汤不够白 | 火力不足 / 加了冷水 | 全程大火滚沸，必须加沸水 |
+| 汤有腥味 | 鱼未煎透 / 未加料酒 | 煎至两面金黄，料酒去腥 |
+| 汤太稀 | 水加太多 / 炖太短 | 水量控制在鱼重 3 倍，至少炖 25 分钟 |
+| 汤变清了 | 中途转小火了 | 始终保持大火，不要中途减火 |

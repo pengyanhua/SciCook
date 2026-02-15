@@ -1,0 +1,84 @@
+---
+const navItems = [
+  { label: "首页", href: "/" },
+  { label: "原理层", href: "/kernel/" },
+  { label: "菜谱库", href: "/recipes/" },
+  { label: "调试区", href: "/debug/" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="sticky top-0 z-50 border-b border-gray-800 bg-gray-950/80 backdrop-blur-md">
+  <nav class="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 group">
+      <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-brand-500/15 border border-brand-500/30 font-mono text-brand-400 text-sm font-bold group-hover:bg-brand-500/25 transition-colors">
+        Sc
+      </div>
+      <div>
+        <span class="text-lg font-bold text-gray-100">理科生下厨房</span>
+        <span class="ml-2 hidden text-xs text-gray-500 font-mono sm:inline">SciCook</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <ul class="hidden items-center gap-1 md:flex">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              "rounded-md px-3 py-2 text-sm font-medium transition-colors",
+              currentPath === item.href || (item.href !== "/" && currentPath.startsWith(item.href))
+                ? "bg-brand-500/15 text-brand-400"
+                : "text-gray-400 hover:bg-gray-800 hover:text-gray-200",
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <!-- Mobile Menu Button -->
+    <button
+      id="mobile-menu-btn"
+      class="flex h-9 w-9 items-center justify-center rounded-md text-gray-400 hover:bg-gray-800 md:hidden"
+      aria-label="打开菜单"
+    >
+      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </button>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div id="mobile-menu" class="hidden border-t border-gray-800 md:hidden">
+    <ul class="space-y-1 px-4 py-3">
+      {navItems.map((item) => (
+        <li>
+          <a
+            href={item.href}
+            class:list={[
+              "block rounded-md px-3 py-2 text-sm font-medium transition-colors",
+              currentPath === item.href || (item.href !== "/" && currentPath.startsWith(item.href))
+                ? "bg-brand-500/15 text-brand-400"
+                : "text-gray-400 hover:bg-gray-800 hover:text-gray-200",
+            ]}
+          >
+            {item.label}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  btn?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+  });
+</script>

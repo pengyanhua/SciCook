@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+/* ===== 自定义主题变量 ===== */
+@theme {
+  /* 品牌色 - 科技蓝绿 */
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-300: #5eead4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+  --color-brand-950: #042f2e;
+
+  /* 科学分类色 */
+  --color-physics: #3b82f6;
+  --color-chemistry: #f59e0b;
+  --color-biology: #22c55e;
+
+  /* 字体 */
+  --font-sans: "Noto Sans SC", "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", ui-monospace, monospace;
+}
+
+/* ===== 全局基础样式 ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-gray-950 text-gray-100 font-sans antialiased;
+}
+
+/* ===== 代码风格菜谱步骤 ===== */
+.recipe-step {
+  @apply font-mono text-sm bg-gray-900 border-l-2 border-brand-500 pl-4 py-2;
+}
+
+.recipe-step::before {
+  content: counter(step) " ";
+  counter-increment: step;
+  @apply text-brand-400 font-bold mr-2;
+}
+
+.recipe-steps {
+  counter-reset: step;
+}
+
+/* ===== 科学标签 ===== */
+.tag-physics {
+  @apply bg-blue-500/15 text-blue-400 border border-blue-500/30;
+}
+
+.tag-chemistry {
+  @apply bg-amber-500/15 text-amber-400 border border-amber-500/30;
+}
+
+.tag-biology {
+  @apply bg-green-500/15 text-green-400 border border-green-500/30;
+}
+
+/* ===== MDX 文章样式 ===== */
+.prose {
+  @apply text-gray-300 leading-relaxed;
+}
+
+.prose h1 {
+  @apply text-3xl font-bold text-gray-50 mt-10 mb-4;
+}
+
+.prose h2 {
+  @apply text-2xl font-bold text-gray-50 mt-8 mb-3 border-b border-gray-800 pb-2;
+}
+
+.prose h3 {
+  @apply text-xl font-semibold text-gray-100 mt-6 mb-2;
+}
+
+.prose p {
+  @apply my-4;
+}
+
+.prose strong {
+  @apply text-brand-400 font-semibold;
+}
+
+.prose code {
+  @apply font-mono text-brand-300 bg-gray-800 px-1.5 py-0.5 rounded text-sm;
+}
+
+.prose pre {
+  @apply font-mono bg-gray-900 border border-gray-800 rounded-lg p-4 my-4 overflow-x-auto;
+}
+
+.prose ul {
+  @apply list-disc list-inside my-4 space-y-1;
+}
+
+.prose ol {
+  @apply list-decimal list-inside my-4 space-y-1;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-brand-500 pl-4 my-4 text-gray-400 italic;
+}
+
+.prose table {
+  @apply w-full my-4 text-sm;
+}
+
+.prose th {
+  @apply bg-gray-800 px-4 py-2 text-left font-semibold text-gray-200;
+}
+
+.prose td {
+  @apply border-t border-gray-800 px-4 py-2;
+}
+
+.prose a {
+  @apply text-brand-400 underline underline-offset-2 hover:text-brand-300 transition-colors;
+}

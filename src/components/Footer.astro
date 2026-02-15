@@ -1,0 +1,46 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-gray-800 bg-gray-950">
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <div class="grid gap-8 sm:grid-cols-3">
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2 mb-3">
+          <div class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-500/15 border border-brand-500/30 font-mono text-brand-400 text-xs font-bold">
+            Sc
+          </div>
+          <span class="font-bold text-gray-200">理科生下厨房</span>
+        </div>
+        <p class="text-sm text-gray-500">
+          拒绝玄学，烹饪是一门精确的科学。<br />
+          <span class="font-mono text-xs">Cooking as Coding.</span>
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <h3 class="mb-3 text-sm font-semibold text-gray-300">导航</h3>
+        <ul class="space-y-2 text-sm text-gray-500">
+          <li><a href="/kernel/" class="hover:text-brand-400 transition-colors">原理层 / Kernel</a></li>
+          <li><a href="/recipes/" class="hover:text-brand-400 transition-colors">菜谱库 / Algorithms</a></li>
+          <li><a href="/debug/" class="hover:text-brand-400 transition-colors">调试区 / Debugging</a></li>
+        </ul>
+      </div>
+
+      <!-- Info -->
+      <div>
+        <h3 class="mb-3 text-sm font-semibold text-gray-300">关于</h3>
+        <ul class="space-y-2 text-sm text-gray-500">
+          <li><span class="font-mono text-xs">domain:</span> scicook.com</li>
+          <li><span class="font-mono text-xs">stack:</span> Astro + React + CF Pages</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-10 border-t border-gray-800 pt-6 text-center text-xs text-gray-600">
+      <p>&copy; {year} 理科生下厨房 (SciCook). All rights reserved.</p>
+    </div>
+  </div>
+</footer>
