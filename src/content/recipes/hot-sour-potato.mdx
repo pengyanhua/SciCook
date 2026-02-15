@@ -1,0 +1,67 @@
+---
+title: "酸辣土豆丝"
+description: "醋酸抑制酶促褐变 + 淀粉冲洗防粘连 + 大火快炒保脆，一道国民菜的精密工艺。"
+category: "快炒"
+difficulty: 1
+scienceTags: ["醋酸护色", "淀粉冲洗", "酶促褐变抑制"]
+date: "2026-02-16"
+servings: 2
+totalTimeSec: 600
+peakTempCelsius: 230
+ingredients:
+  - { name: "土豆", amountG: 350, role: "主料", notes: "中等大小 2 个" }
+  - { name: "干辣椒", amountG: 5, role: "辅料", notes: "3-4根剪段" }
+  - { name: "花椒", amountG: 2, unit: "g", role: "辅料", notes: "约10粒" }
+  - { name: "大蒜", amountG: 10, role: "辅料", notes: "2瓣切片" }
+  - { name: "白醋", amountG: 20, unit: "ml", role: "调味", notes: "白醋不影响颜色" }
+  - { name: "食盐", amountG: 3, unit: "g", role: "调味" }
+  - { name: "生抽", amountG: 5, unit: "ml", role: "调味" }
+  - { name: "葱花", amountG: 10, role: "辅料", notes: "葱绿切花" }
+  - { name: "食用油", amountG: 25, unit: "ml", role: "调味" }
+steps:
+  - action: "土豆去皮，切 3mm 粗细的均匀丝"
+    scienceNote: "均匀的丝确保每根受热一致。太粗炒不透，太细容易断"
+  - action: "切好的土豆丝立刻放入清水中反复冲洗 3 次，直到水变清澈"
+    durationSec: 120
+    scienceNote: "冲洗有两个目的：1) 去除表面游离淀粉，防止炒制时粘连成团；2) 水环境隔绝空气，阻止多酚氧化酶与O₂接触，延缓褐变"
+  - action: "沥干水分（用厨房纸吸干效果最佳）"
+    durationSec: 60
+    scienceNote: "表面水分必须去除，否则下锅时水分蒸发降温，无法达到快炒所需高温"
+  - action: "锅热加油，冷油放花椒小火炸出香味，捞出花椒"
+    durationSec: 20
+    tempCelsius: 150
+    scienceNote: "萃取脂溶性花椒素"
+  - action: "下干辣椒段和蒜片，爆香"
+    durationSec: 10
+    tempCelsius: 160
+  - action: "大火下土豆丝，快速翻炒"
+    durationSec: 60
+    tempCelsius: 220
+    scienceNote: "大火确保锅温不被土豆丝的水分降低太多。快速翻炒让每根土豆丝均匀受热"
+  - action: "沿锅边淋入白醋，继续翻炒"
+    durationSec: 10
+    scienceNote: "白醋降低 pH 至 < 4 → 多酚氧化酶失活 → 土豆丝保持雪白；同时酸性环境加强果胶稳定性→保脆"
+  - action: "加入盐和生抽，翻炒均匀，撒葱花出锅"
+    durationSec: 15
+relatedPrinciples: ["vinegar-science", "sichuan-pepper-science"]
+---
+
+## 科学解析
+
+酸辣土豆丝的核心挑战是**脆而不碎、白而不黑**。
+
+**护色原理**：土豆切面暴露后，多酚氧化酶 (PPO) 催化酚类物质氧化成褐色的醌类物质。解决方案有两个叠加：
+1. 冲洗泡水 → 隔绝 O₂
+2. 加白醋 → pH < 4 灭活 PPO
+
+**保脆原理**：冲洗去除表面淀粉后，土豆丝之间不会因淀粉糊化而粘连。保留的细胞壁果胶在酸性环境下更稳定，维持脆感。
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 粘成一团 | 淀粉没洗干净 / 火力不足 | 多洗几次到水清，大火快炒 |
+| 变黑变灰 | 切后没泡水 / 没加醋 | 切完立即泡水，炒时加醋 |
+| 太软 | 炒太久 | 全程不超过 90 秒 |
+| 醋味太重 | 白醋加太多 | 控制在 20ml，锅边淋入让部分挥发 |
+| 不入味 | 没沥干水就下锅 | 吸干水分确保高温炒制 |

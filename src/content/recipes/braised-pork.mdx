@@ -1,0 +1,81 @@
+---
+title: "红烧肉"
+description: "炒糖色的焦糖化 + 胶原蛋白水解 + 美拉德反应，三大化学反应造就一块入口即化的五花肉。"
+category: "炖煮"
+difficulty: 2
+scienceTags: ["焦糖化反应", "胶原蛋白水解", "美拉德反应", "脂肪乳化"]
+date: "2026-02-16"
+servings: 4
+totalTimeSec: 5400
+peakTempCelsius: 200
+ingredients:
+  - { name: "五花肉", amountG: 600, role: "主料", notes: "切 3cm 方块" }
+  - { name: "冰糖", amountG: 30, unit: "g", role: "调味", notes: "炒糖色用" }
+  - { name: "老抽", amountG: 10, unit: "ml", role: "调味", notes: "上色" }
+  - { name: "生抽", amountG: 20, unit: "ml", role: "调味", notes: "提鲜" }
+  - { name: "料酒", amountG: 30, unit: "ml", role: "调味" }
+  - { name: "生姜", amountG: 20, role: "辅料", notes: "拍碎" }
+  - { name: "大葱", amountG: 30, role: "辅料", notes: "葱白切段打结" }
+  - { name: "八角", amountG: 3, unit: "g", role: "辅料", notes: "2颗" }
+  - { name: "桂皮", amountG: 3, unit: "g", role: "辅料", notes: "1小段" }
+  - { name: "香叶", amountG: 1, unit: "g", role: "辅料", notes: "2片" }
+  - { name: "食用油", amountG: 10, unit: "ml", role: "调味" }
+  - { name: "开水", amountG: 500, unit: "ml", role: "辅料", notes: "必须是开水" }
+steps:
+  - action: "五花肉冷水下锅，加料酒 15ml、姜片 2 片，大火煮沸后撇去浮沫，捞出洗净"
+    durationSec: 300
+    tempCelsius: 100
+    scienceNote: "焯水的目的：1) 溶解并去除血水中的可溶性蛋白（浮沫），减少腥味；2) 料酒乙醇共沸蒸馏带走三甲胺等腥味分子"
+  - action: "锅中加少量油和冰糖，小火加热，不断搅拌"
+    tempCelsius: 170
+    scienceNote: "冰糖纯度高，炒出的糖色更清亮。小火是关键——糖的焦糖化窗口在 170-185°C，超过 200°C 就碳化变苦"
+  - action: "观察糖的状态：融化→大泡→小泡→琥珀色，立即下入五花肉块翻炒上色"
+    durationSec: 180
+    tempCelsius: 180
+    scienceNote: "大泡→小泡是焦糖化的关键信号。下肉时肉表面水分急剧蒸发降温，精确终止焦糖化防止碳化。同时糖色包裹肉表面，后续炖煮中与肉的氨基酸继续发生美拉德反应"
+  - action: "沿锅边淋入料酒 15ml"
+    durationSec: 10
+    scienceNote: "乙醇在高温锅面瞬间气化，共沸蒸馏进一步去腥"
+  - action: "加入老抽上色，翻炒均匀"
+    durationSec: 30
+    scienceNote: "老抽中的焦糖色和类黑精附着在肉表面，赋予红亮色泽"
+  - action: "加入生姜、葱结、八角、桂皮、香叶"
+    durationSec: 10
+  - action: "一次性加入 500ml 开水，没过肉面"
+    tempCelsius: 100
+    scienceNote: "必须加开水！冷水会使肉表面蛋白质骤然收缩，导致肉质紧缩变硬。开水保持蛋白质已有的松弛状态"
+  - action: "大火煮沸后转小火，加盖炖煮"
+    durationSec: 3600
+    tempCelsius: 90
+    scienceNote: "小火慢炖 (90°C左右) 是核心：胶原蛋白在 75-85°C 缓慢水解为明胶，使肉质从'韧'变为'软糯'。水解需要时间，大火反而会让肌纤维过度收缩变柴"
+  - action: "炖 50 分钟后加入生抽，继续炖 10 分钟"
+    durationSec: 600
+    scienceNote: "生抽后加保留谷氨酸的鲜味（久煮会分解）"
+  - action: "开盖，转大火收汁至浓稠，汤汁能挂在肉上"
+    durationSec: 300
+    tempCelsius: 100
+    scienceNote: "收汁阶段水分蒸发、汤汁浓缩，明胶浓度升高形成粘稠质感，包裹在每块肉表面"
+relatedPrinciples: ["sugar-science", "soy-sauce-science", "cooking-wine-science"]
+---
+
+## 科学解析
+
+红烧肉是**时间换质地**的经典案例。核心转化是：
+
+**胶原蛋白 → 明胶**（在 75-85°C，需要 45-60 分钟）
+
+五花肉中皮层和肥肉层含有大量胶原蛋白。长时间低温炖煮使其水解为明胶（就是做果冻的那个东西），这就是红烧肉"入口即化"的原因。
+
+同时，色泽的来源是双重的：
+1. **炒糖色** → 焦糖化反应 → 琥珀色底色
+2. **老抽 + 肉** → 美拉德反应 → 红亮色泽
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 糖色炒焦了（苦） | 火太大 / 没及时下肉 | 全程小火，小泡出现立刻下肉 |
+| 肉不烂 | 炖煮时间不够 / 火太大 | 小火至少 60 分钟，保持微沸不翻滚 |
+| 颜色不够红亮 | 老抽太少 | 可适当增加老抽，或选品质好的老抽 |
+| 肉质发柴 | 加了冷水 / 大火炖 | 必须加开水，全程小火 |
+| 太油腻 | 五花肉肥瘦比例不对 | 选肥瘦相间的五花，或煮好后冷藏去油 |

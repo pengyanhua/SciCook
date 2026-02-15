@@ -1,5 +1,3 @@
 name = "scicook"
 compatibility_date = "2026-02-15"
-
-[site]
-bucket = "./dist"
+pages_build_output_dir = "./dist"
