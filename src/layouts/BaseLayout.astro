@@ -53,6 +53,9 @@ const ogImage = image ? new URL(image, Astro.site).href : new URL("/og-default.p
       gtag('config', 'G-X58XQP0JYY');
     </script>
 
+    <!-- Google AdSense -->
+    <script is:inline async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8985125275559714" crossorigin="anonymous"></script>
+
     <!-- Structured Data slot -->
     <slot name="head" />
   </head>
