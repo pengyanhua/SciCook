@@ -20,6 +20,14 @@ const fullTitle = title === "首页" ? "理科生下厨房 | SciCook" : `${title
     <meta name="description" content={description} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{fullTitle}</title>
+    <!-- Google Analytics -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-X58XQP0JYY"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-X58XQP0JYY');
+    </script>
   </head>
   <body class="flex min-h-screen flex-col">
     <Header />
