@@ -17,6 +17,9 @@ node_modules/
 .env.*
 !.env.example
 
+# claude
+.claude/
+
 # editor
 .vscode/
 .idea/

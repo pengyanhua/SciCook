@@ -1,0 +1,63 @@
+---
+title: "饺子（冷水面法）"
+description: "冷水和面最大化面筋 + 加盐增强二硫键 = 筋道耐煮不破皮的饺子。"
+category: "面食"
+difficulty: 2
+scienceTags: ["冷水面团", "面筋网络", "渗透压调馅"]
+date: "2026-02-16"
+servings: 4
+totalTimeSec: 3600
+peakTempCelsius: 100
+ingredients:
+  - { name: "中筋面粉", amountG: 300, role: "主料" }
+  - { name: "冷水", amountG: 150, unit: "ml", role: "辅料", notes: "水温<30°C" }
+  - { name: "食盐", amountG: 2, unit: "g", role: "调味", notes: "增强面筋" }
+  - { name: "猪肉馅", amountG: 250, role: "主料", notes: "三肥七瘦" }
+  - { name: "大葱", amountG: 80, role: "辅料", notes: "切碎" }
+  - { name: "生姜", amountG: 10, role: "辅料", notes: "切末或姜水" }
+  - { name: "生抽", amountG: 15, unit: "ml", role: "调味" }
+  - { name: "蚝油", amountG: 10, unit: "ml", role: "调味" }
+  - { name: "花椒水", amountG: 30, unit: "ml", role: "调味", notes: "花椒泡水取汁" }
+  - { name: "香油", amountG: 10, unit: "ml", role: "调味" }
+  - { name: "食盐", amountG: 3, unit: "g", role: "调味", notes: "馅料用" }
+  - { name: "白胡椒粉", amountG: 2, unit: "g", role: "调味" }
+steps:
+  - action: "面粉加 2g 盐混匀，缓缓加入冷水，边加边用筷子搅成棉絮状"
+    scienceNote: "盐中的 Na⁺ 和 Cl⁻ 离子能增强面筋蛋白之间的二硫键和离子键，使面筋网络更紧密 → 饺子皮更筋道耐煮"
+  - action: "下手揉成团，反复揉 10 分钟至表面光滑"
+    durationSec: 600
+    scienceNote: "机械力促使麦谷蛋白和麦醇溶蛋白水合、展开、交联，形成致密的三维面筋网络"
+  - action: "盖保鲜膜醒面"
+    durationSec: 1800
+    scienceNote: "静置让面筋蛋白的氢键重新排列，应力释放 → 面团从紧硬变柔软，后续擀皮不回缩"
+  - action: "调馅：肉馅中加入生抽、蚝油、盐、白胡椒粉，朝一个方向搅拌上劲"
+    durationSec: 120
+    scienceNote: "单方向搅拌使肌球蛋白从肌纤维中溶出，形成黏性蛋白网络 → 馅料有'弹性'不散"
+  - action: "分次加入花椒水，继续同方向搅拌至水分完全吸收"
+    scienceNote: "花椒水双重功能：1) 花椒素去腥；2) 分次加水让蛋白网络逐步吸水膨胀 → 馅料多汁"
+  - action: "加入葱碎和姜末，淋香油，轻轻拌匀"
+    scienceNote: "葱姜后加避免出水；香油最后加是因为油脂会包裹蛋白质阻碍继续吸水，所以必须在打水完成后加"
+  - action: "面团搓长条，切 10g 小剂子，擀成中间厚边缘薄的圆皮"
+    scienceNote: "中间厚是为了兜住馅料汤汁不漏，边缘薄是为了捏合后不会太厚影响口感"
+  - action: "包好饺子，大火烧开水，下饺子，煮开后加冷水，重复 3 次至饺子鼓肚浮起"
+    durationSec: 480
+    tempCelsius: 100
+    scienceNote: "三次加冷水（点水法）：每次降温让馅料有时间均匀传热。如果持续沸腾，皮受热太快变软破裂，而馅心可能还没熟"
+relatedPrinciples: ["gluten-science", "dough-water-temp"]
+---
+
+## 科学解析
+
+饺子的灵魂在**皮**和**馅**两条线：
+
+- **皮**：冷水 + 盐 → 面筋最大化 → 筋道耐煮不破皮
+- **馅**：单方向搅拌 + 分次加水 → 肌球蛋白网络锁水 → 多汁有弹性
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 皮煮烂了 | 面筋不够 / 没加盐 / 醒面不够 | 冷水+盐，醒 30 min |
+| 馅散了没弹性 | 没朝一个方向搅 / 没打水 | 单方向搅 2 min 以上 |
+| 馅不多汁 | 水没打进去 | 分次加水，每次搅至吸收再加 |
+| 饺子粘连 | 下锅时水没滚 / 没搅动 | 大火滚水下锅，立刻轻推防粘 |

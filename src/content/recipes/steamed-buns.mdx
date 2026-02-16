@@ -1,0 +1,65 @@
+---
+title: "白馒头（酵母发酵法）"
+description: "酵母产 CO₂ 吹泡 + 面筋网络兜气 + 二次醒发定型 = 蓬松细腻的大白馒头。"
+category: "面食"
+difficulty: 1
+scienceTags: ["酵母发酵", "面筋网络", "CO₂膨胀", "二次醒发"]
+date: "2026-02-16"
+servings: 6
+totalTimeSec: 5400
+peakTempCelsius: 100
+ingredients:
+  - { name: "中筋面粉", amountG: 300, role: "主料" }
+  - { name: "温水", amountG: 155, unit: "ml", role: "辅料", notes: "35-38°C，温手不烫" }
+  - { name: "干酵母", amountG: 3, unit: "g", role: "辅料", notes: "面粉重量的1%" }
+  - { name: "白砂糖", amountG: 8, unit: "g", role: "调味", notes: "促进酵母发酵" }
+steps:
+  - action: "温水中加入酵母和糖，搅匀静置 5 分钟至表面出现细密泡沫"
+    durationSec: 300
+    tempCelsius: 36
+    scienceNote: "35-38°C 是酵母最佳活化温度。糖为酵母提供快速可用的碳源。起泡证明酵母已激活、开始产 CO₂"
+  - action: "酵母水缓缓倒入面粉，边倒边搅成絮状，再揉成光滑面团"
+    durationSec: 600
+    scienceNote: "揉面发展面筋网络——这是后续兜住 CO₂ 气泡的关键结构。揉至'三光'（手光、面光、盆光）"
+  - action: "面团放入容器，盖保鲜膜，温暖处一次发酵至体积 2 倍大"
+    durationSec: 3600
+    tempCelsius: 35
+    scienceNote: "酵母无氧发酵：葡萄糖→乙醇+CO₂。CO₂ 被面筋网络包裹形成气泡，面团膨胀。35°C 约 45-60 min，25°C 需要 90+ min"
+  - action: "手指沾面粉戳洞检验：不回缩不塌陷即为发好"
+    scienceNote: "回缩=发酵不足（面筋弹性太强，CO₂不够）；塌陷=发酵过度（面筋被撑破，兜不住气）"
+  - action: "面团取出放案板，揉 5 分钟排气"
+    durationSec: 300
+    scienceNote: "揉面排出大气泡，将气体重新分布为均匀小气泡 → 成品内部气孔细密而非大洞"
+  - action: "搓长条，切成 6 等份，每份揉圆整形"
+    durationSec: 300
+  - action: "整形好的馒头放在蒸笼纸上，盖湿布二次醒发"
+    durationSec: 1200
+    tempCelsius: 35
+    scienceNote: "二次醒发让整形时被压缩的面筋重新松弛，CO₂ 重新积累。跳过这步→馒头紧实不蓬松"
+  - action: "冷水上锅，大火烧开后转中大火蒸 15 分钟"
+    durationSec: 900
+    tempCelsius: 100
+    scienceNote: "冷水上锅让馒头随温度缓慢升高，面筋和淀粉逐步定型。如果沸水直接上锅，表面瞬间定型但内部还未膨胀，导致外硬内塌"
+  - action: "关火后焖 3 分钟再开盖"
+    durationSec: 180
+    scienceNote: "急开盖→外界冷空气涌入→馒头内部气泡急剧收缩→表面塌陷回缩。焖 3 分钟让温度缓慢过渡"
+relatedPrinciples: ["fermentation-science", "gluten-science", "dough-water-temp"]
+---
+
+## 科学解析
+
+馒头是**面筋工程 + 微生物发酵**的完美结合：
+
+- 面筋网络 = 建筑框架（承受 CO₂ 膨胀力）
+- 酵母发酵 = 充气系统（持续产生 CO₂）
+- 蒸制加热 = 定型固化（淀粉糊化 + 蛋白变性，永久固定蓬松结构）
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 发不起来 | 酵母失活/水温太高/环境太冷 | 检查酵母日期，水温 35-38°C，温暖环境 |
+| 内部大洞 | 排气不充分 | 多揉几分钟，把大气泡彻底排出 |
+| 蒸完塌陷 | 发过头/开盖太急 | 控制一发至刚好 2 倍，关火焖 3 min |
+| 表面开裂 | 二次醒发不够 | 醒发 15-20 min，面胚变轻变大再上锅 |
+| 不够白 | 面粉品质/蒸汽水滴 | 用好面粉，锅盖包布吸冷凝水 |
