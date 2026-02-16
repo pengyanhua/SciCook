@@ -18,7 +18,7 @@ const recipes = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
-    category: z.enum(["快炒", "炖煮", "烘焙", "凉拌", "蒸制", "煎炸", "面食"]),
+    category: z.enum(["快炒", "炖煮", "烘焙", "凉拌", "蒸制", "煎炸", "面食", "烧烤"]),
     difficulty: z.number().min(1).max(3),
     scienceTags: z.array(z.string()),
     date: z.string(),

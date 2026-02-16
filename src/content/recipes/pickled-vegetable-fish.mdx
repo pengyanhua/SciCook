@@ -1,0 +1,69 @@
+---
+title: "酸菜鱼"
+description: "乳酸发酵的酸菜 + 上浆滑嫩的鱼片 + 酸汤去腥提鲜 = 酸辣开胃的国民级鱼菜。"
+category: "炖煮"
+difficulty: 2
+scienceTags: ["乳酸发酵", "酸碱去腥", "上浆保护", "鲜味叠加"]
+date: "2026-02-16"
+servings: 3
+totalTimeSec: 2100
+peakTempCelsius: 100
+ingredients:
+  - { name: "黑鱼", amountG: 600, role: "主料", notes: "取鱼片，鱼骨鱼头留用。可用草鱼替代" }
+  - { name: "酸菜", amountG: 250, role: "主料", notes: "四川泡酸菜，切段挤干水分" }
+  - { name: "鸡蛋清", amountG: 30, unit: "g", role: "辅料", notes: "1个蛋清" }
+  - { name: "干淀粉", amountG: 15, unit: "g", role: "辅料", notes: "上浆用" }
+  - { name: "泡椒", amountG: 30, unit: "g", role: "调味", notes: "切碎" }
+  - { name: "生姜", amountG: 20, role: "辅料", notes: "切片" }
+  - { name: "大蒜", amountG: 15, role: "辅料", notes: "切片" }
+  - { name: "花椒", amountG: 5, unit: "g", role: "调味" }
+  - { name: "料酒", amountG: 15, unit: "ml", role: "调味" }
+  - { name: "食盐", amountG: 4, unit: "g", role: "调味" }
+  - { name: "白胡椒粉", amountG: 2, unit: "g", role: "调味" }
+  - { name: "食用油", amountG: 30, unit: "ml", role: "调味" }
+  - { name: "清水", amountG: 1000, unit: "ml", role: "辅料" }
+steps:
+  - action: "黑鱼去骨取片（3-4mm 厚），鱼片加盐 1g、料酒、白胡椒粉轻轻抓匀，再加蛋清和淀粉上浆"
+    durationSec: 120
+    scienceNote: "黑鱼的肌纤维排列紧密，切片后比草鱼更不容易散。上浆原理同水煮鱼：蛋清+淀粉双层保护膜阻止蛋白质过度收缩"
+  - action: "鱼骨鱼头冷水下锅焯水去血沫，捞出备用"
+    durationSec: 300
+    tempCelsius: 100
+  - action: "酸菜切段，用手挤干多余水分"
+    scienceNote: "酸菜是白菜经乳酸菌厌氧发酵的产物，核心成分是乳酸（pH 3.5-4.0）。挤干水分是为了后续炒制时能快速出香、不稀释汤底"
+  - action: "锅中加油，中火炒香酸菜 2-3 分钟至微微焦黄，加入泡椒、姜蒜片、花椒继续炒香"
+    durationSec: 180
+    tempCelsius: 140
+    scienceNote: "炒酸菜是灵魂步骤！加热使酸菜中的乳酸部分挥发→酸味变柔和不刺激；同时美拉德反应赋予焦香底味。不炒直接煮→汤底酸味尖锐不够醇厚"
+  - action: "加入 1000ml 清水和鱼骨鱼头，大火煮沸后中火煮 15 分钟"
+    durationSec: 900
+    tempCelsius: 100
+    scienceNote: "鱼骨+酸菜共煮：1) 鱼骨释放明胶和鲜味氨基酸；2) 酸菜中的乳酸加速鱼骨胶原蛋白水解（酸性环境降低胶原蛋白变性温度）→ 汤底更浓鲜"
+  - action: "捞出鱼骨，加盐调味。将汤保持微沸，逐片滑入鱼片"
+    durationSec: 90
+    tempCelsius: 85
+    scienceNote: "微沸状态（85°C）滑入鱼片，60-90 秒变白即熟。乳酸的酸性环境帮助鱼肉蛋白质更快凝固，同时中和三甲胺去腥"
+  - action: "鱼片变白后关火，连汤带鱼倒入大碗，撒花椒和葱花"
+relatedPrinciples: ["fish-protein-science", "fish-species-guide", "vinegar-science", "meat-velveting"]
+ingredientTags: ["鱼虾", "鱼", "黑鱼", "草鱼", "白菜"]
+---
+
+## 科学解析
+
+酸菜鱼的精妙在于**酸**的三重作用：
+
+1. **去腥**：乳酸 + 三甲胺 → 乳酸三甲铵（无挥发性的盐）→ 化学消灭腥味
+2. **嫩肉**：酸性环境让鱼片蛋白质在更低温度凝固→不需要高温→肉质更嫩
+3. **开胃**：酸味刺激唾液和胃液分泌→食欲大增
+
+酸菜的乳酸发酵还带来了另一个维度的鲜味——发酵过程中蛋白质分解产生的**游离氨基酸**（谷氨酸等），这就是为什么酸菜鱼的汤底特别"鲜"。
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 鱼片碎了 | 鱼种选错 / 切太薄 | 首选黑鱼，切 3-4mm 厚 |
+| 汤底酸味太冲 | 酸菜没炒 | 酸菜必须炒 2-3 分钟让酸味柔化 |
+| 不够鲜 | 没用鱼骨煮汤 | 鱼骨煮 15 分钟是鲜味来源 |
+| 鱼片老了 | 煮太久 | 变白即捞，最多 90 秒 |
+| 汤底太淡 | 水太多 / 酸菜太少 | 酸菜:水 约 1:4（重量比） |

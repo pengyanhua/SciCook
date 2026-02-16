@@ -1,0 +1,68 @@
+---
+title: "西湖醋鱼"
+description: "先煮后浇糖醋芡汁，用醋酸中和鱼腥 + 淀粉勾芡挂壁 = 杭帮菜的酸甜经典。"
+category: "炖煮"
+difficulty: 3
+scienceTags: ["酸碱中和", "蛋白质变性", "淀粉勾芡", "火候控制"]
+date: "2026-02-16"
+servings: 2
+totalTimeSec: 1500
+peakTempCelsius: 100
+ingredients:
+  - { name: "草鱼", amountG: 600, role: "主料", notes: "一条，对半剖开" }
+  - { name: "生姜", amountG: 20, role: "辅料", notes: "切丝" }
+  - { name: "大葱", amountG: 15, role: "辅料", notes: "切段" }
+  - { name: "料酒", amountG: 20, unit: "ml", role: "调味" }
+  - { name: "陈醋", amountG: 45, unit: "ml", role: "调味" }
+  - { name: "白砂糖", amountG: 30, unit: "g", role: "调味" }
+  - { name: "生抽", amountG: 15, unit: "ml", role: "调味" }
+  - { name: "老抽", amountG: 5, unit: "ml", role: "调味", notes: "上色" }
+  - { name: "水淀粉", amountG: 20, unit: "ml", role: "辅料", notes: "勾芡用" }
+  - { name: "食盐", amountG: 2, unit: "g", role: "调味" }
+  - { name: "清水", amountG: 800, unit: "ml", role: "辅料", notes: "煮鱼用" }
+steps:
+  - action: "草鱼处理干净，对半剖开，鱼身斜切刀纹（深至鱼骨的 2/3），间距约 2cm"
+    scienceNote: "斜切刀纹让鱼肉煮制时受热均匀、入味更快，同时方便后续分食"
+  - action: "锅中加水 800ml，放入姜片、葱段、料酒，大火烧至微沸（冒小泡但未滚）"
+    tempCelsius: 85
+    scienceNote: "关键是微沸而非沸腾！85°C 左右的水温让鱼肉蛋白质缓慢变性→鱼肉嫩滑不碎。如果大火滚煮→鱼肉外层过度收缩→口感发柴"
+  - action: "将鱼轻轻放入微沸的水中，控制火力保持微沸状态，煮约 8 分钟"
+    durationSec: 480
+    tempCelsius: 85
+    scienceNote: "西湖醋鱼传统做法是'焐煮'（焐=浸在热水中缓慢加热）。85°C 微沸让鱼肉从外到内均匀升温至 60-65°C→刚好成熟。大约 8 分钟后鱼眼变白凸出=鱼肉熟的信号"
+  - action: "小心捞出鱼，摆入盘中"
+    scienceNote: "捞鱼时动作要轻，此时鱼肉非常娇嫩，稍用力就碎。可以用两把铲子同时托住鱼身"
+  - action: "另起小锅，取煮鱼汤汁 100ml，加入陈醋、白砂糖、生抽、老抽、盐，大火煮沸"
+    tempCelsius: 100
+    scienceNote: "用煮鱼的汤汁做芡底→汤汁中已有鱼的鲜味氨基酸→芡汁自带鲜味。醋酸在这一步与汤汁中残留的三甲胺反应→最终去腥"
+  - action: "淋入水淀粉勾芡，搅至汤汁透明浓稠"
+    scienceNote: "淀粉糊化增稠→芡汁能挂在鱼身表面形成一层亮泽的酸甜外衣"
+  - action: "将糖醋芡汁均匀浇在鱼身上，放上姜丝点缀"
+    scienceNote: "趁热浇汁→芡汁流动性好→能顺着刀纹渗入鱼肉内部→内外都有酸甜味"
+relatedPrinciples: ["fish-protein-science", "fish-species-guide", "vinegar-science", "sugar-science"]
+ingredientTags: ["鱼虾", "鱼", "草鱼"]
+---
+
+## 科学解析
+
+西湖醋鱼是**温和烹饪**的代表——不煎不炸不红烧，用最接近"水浴加热"的方式烹制鱼肉，最大限度保留鱼的原始质地。
+
+核心控制变量只有一个：**水温**。
+
+> **85°C 微沸 = 蛋白质温和变性的最佳窗口**
+
+- &lt;80°C：鱼肉不熟，表面黏滑
+- 85°C：鱼肉恰好成熟，嫩滑如豆腐
+- &gt;95°C：猛烈沸腾→鱼肉外层过度收缩→柴硬
+
+然后用醋酸完成最后一击——化学去腥 + 酸甜调味，一步到位。
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 鱼肉散了 | 水温太高 / 翻动 | 保持微沸，全程不翻鱼 |
+| 鱼肉柴了 | 沸腾太猛 / 煮太久 | 微沸 8 分钟足够，鱼眼凸出即熟 |
+| 腥味重 | 姜葱料酒不够 / 醋太少 | 增加去腥三件套用量 |
+| 芡汁太稀 | 淀粉太少 | 增加水淀粉量，煮至透明浓稠 |
+| 不够酸甜 | 糖醋比例不对 | 糖:醋 约 2:3（重量比），喜甜可调整 |

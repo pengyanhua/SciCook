@@ -1,0 +1,80 @@
+---
+title: "烤鱼（家庭烤箱版）"
+description: "先煎后烤 + 底料爆香 + 高温辐射传热 = 外焦内嫩、浸满麻辣底料的烤鱼。"
+category: "烧烤"
+difficulty: 2
+scienceTags: ["辐射传热", "美拉德反应", "辣椒素", "脂肪渲染"]
+date: "2026-02-16"
+servings: 3
+totalTimeSec: 3000
+peakTempCelsius: 220
+ingredients:
+  - { name: "草鱼", amountG: 800, role: "主料", notes: "一条，从背部对半剖开不切断" }
+  - { name: "生姜", amountG: 25, role: "辅料", notes: "切片" }
+  - { name: "大蒜", amountG: 30, role: "辅料", notes: "切片" }
+  - { name: "大葱", amountG: 20, role: "辅料", notes: "切段" }
+  - { name: "料酒", amountG: 20, unit: "ml", role: "调味" }
+  - { name: "食盐", amountG: 5, unit: "g", role: "调味" }
+  - { name: "孜然粉", amountG: 5, unit: "g", role: "调味" }
+  - { name: "辣椒粉", amountG: 10, unit: "g", role: "调味" }
+  - { name: "花椒粉", amountG: 5, unit: "g", role: "调味" }
+  - { name: "郫县豆瓣酱", amountG: 30, unit: "g", role: "调味" }
+  - { name: "干辣椒", amountG: 15, unit: "g", role: "调味", notes: "剪段" }
+  - { name: "花椒", amountG: 5, unit: "g", role: "调味" }
+  - { name: "食用油", amountG: 50, unit: "ml", role: "调味" }
+  - { name: "洋葱", amountG: 100, role: "辅料", notes: "切圈，垫底" }
+  - { name: "芹菜", amountG: 50, role: "辅料", notes: "切段" }
+  - { name: "土豆", amountG: 150, role: "辅料", notes: "切薄片" }
+  - { name: "白芝麻", amountG: 5, unit: "g", role: "辅料" }
+steps:
+  - action: "草鱼从背部对半剖开（腹部不切断），去内脏去鳞，鱼身两面划刀"
+    scienceNote: "背开法让鱼摊开后面积最大→受热面积最大→烤制更均匀。腹部相连让鱼保持完整形态"
+  - action: "鱼身内外抹盐、料酒、孜然粉 2g，腌制 30 分钟"
+    durationSec: 1800
+    scienceNote: "长时间腌制让盐深入鱼肉内部（渗透深度约 3-5mm）。孜然中的枯茗醛具有独特的辛香，同时有一定的抑菌去腥作用"
+  - action: "烤箱预热 220°C。平底锅热油，将鱼两面煎至微黄"
+    durationSec: 300
+    tempCelsius: 180
+    scienceNote: "先煎后烤是关键！煎制在鱼表面产生美拉德反应层→锁住水分+增加焦香。如果直接烤，鱼表面水分蒸发太快→外干内不熟"
+  - action: "烤盘铺锡纸，底部铺洋葱圈和土豆片，将煎好的鱼摊开放在上面"
+    scienceNote: "洋葱垫底有两个作用：1) 隔开鱼身和烤盘底部防止粘连和焦糊；2) 洋葱在高温下释放糖分焦糖化→甜香底味。土豆片吸收鱼汁和底料→成为美味配菜"
+  - action: "送入 220°C 烤箱中层，烤 15 分钟"
+    durationSec: 900
+    tempCelsius: 220
+    scienceNote: "220°C 的烤箱以红外辐射为主要传热方式。辐射传热不需要介质→鱼的各个表面同时受热→比煎更均匀。15 分钟让鱼肉中心达到 65-70°C"
+  - action: "烤鱼的同时炒底料：热油爆香蒜片、干辣椒、花椒、豆瓣酱，加入辣椒粉、花椒粉、孜然粉 3g 炒匀"
+    durationSec: 180
+    tempCelsius: 140
+    scienceNote: "底料炒制让所有脂溶性风味物质（辣椒素、花椒山椒素、孜然挥发油）充分溶入油中→底料的风味层次远超干撒调料粉"
+  - action: "烤鱼取出，将炒好的底料均匀浇在鱼身上，放上芹菜段"
+    scienceNote: "趁热浇底料：热鱼+热底料→热量促进底料中的风味物质渗入鱼肉划刀处→入味更深"
+  - action: "再送入烤箱 200°C 烤 8 分钟，取出撒白芝麻和葱花"
+    durationSec: 480
+    tempCelsius: 200
+    scienceNote: "第二次烤让底料和鱼肉融合，同时底料中的水分蒸发、调味浓缩。芝麻中的芝麻素在余热中释放坚果香"
+relatedPrinciples: ["fish-protein-science", "fish-species-guide", "sichuan-pepper-science"]
+ingredientTags: ["鱼虾", "鱼", "草鱼", "土豆", "蔬菜"]
+---
+
+## 科学解析
+
+烤鱼是**多重传热方式的复合**：
+
+1. **煎制**（传导）：锅面直接接触→表面美拉德反应
+2. **烤制**（辐射）：烤箱红外线→均匀加热整条鱼
+3. **底料**（对流）：热油底料浇淋→风味物质对流渗透
+
+三种传热方式叠加，让鱼从外到内的每一层都有不同的质感：
+- 最外层：焦香酥脆（美拉德反应）
+- 中间层：浸透底料风味（辣椒素+花椒素）
+- 核心层：鱼肉嫩滑多汁（蛋白质温和变性）
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 外焦内生 | 温度太高/鱼太厚 | 可降至 200°C 延长时间，或用更薄的鱼 |
+| 鱼肉发柴 | 烤太久 | 两次共烤约 23 分钟足够，勿超时 |
+| 不够入味 | 没先煎/底料浇得太晚 | 必须先煎再烤，底料趁热浇 |
+| 底部焦了 | 没垫洋葱/锡纸 | 必须铺锡纸+洋葱垫底 |
+| 不够麻辣 | 底料炒不香 | 豆瓣酱要炒出红油，花椒要炒到出香 |

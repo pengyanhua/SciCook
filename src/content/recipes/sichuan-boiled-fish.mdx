@@ -1,0 +1,75 @@
+---
+title: "水煮鱼"
+description: "淀粉上浆锁水 + 宽油低温滑熟 + 热油浇淋激香 = 麻辣鲜嫩的川菜经典。"
+category: "炖煮"
+difficulty: 3
+scienceTags: ["上浆保护", "辣椒素", "花椒麻素", "油温控制"]
+date: "2026-02-16"
+servings: 3
+totalTimeSec: 2400
+peakTempCelsius: 220
+ingredients:
+  - { name: "草鱼", amountG: 600, role: "主料", notes: "取鱼片，鱼骨鱼头留用" }
+  - { name: "鸡蛋清", amountG: 30, unit: "g", role: "辅料", notes: "1个蛋清，上浆用" }
+  - { name: "干淀粉", amountG: 20, unit: "g", role: "辅料", notes: "上浆用" }
+  - { name: "豆芽", amountG: 200, role: "辅料", notes: "垫底" }
+  - { name: "干辣椒", amountG: 30, unit: "g", role: "调味", notes: "剪段去籽" }
+  - { name: "花椒", amountG: 10, unit: "g", role: "调味" }
+  - { name: "郫县豆瓣酱", amountG: 30, unit: "g", role: "调味" }
+  - { name: "生姜", amountG: 20, role: "辅料", notes: "切片" }
+  - { name: "大蒜", amountG: 20, role: "辅料", notes: "切片" }
+  - { name: "料酒", amountG: 20, unit: "ml", role: "调味" }
+  - { name: "食盐", amountG: 5, unit: "g", role: "调味" }
+  - { name: "白胡椒粉", amountG: 2, unit: "g", role: "调味" }
+  - { name: "食用油", amountG: 80, unit: "ml", role: "调味" }
+  - { name: "清水", amountG: 800, unit: "ml", role: "辅料" }
+steps:
+  - action: "草鱼去骨取片：斜刀片成 3-4mm 厚的鱼片，鱼骨鱼头留用"
+    scienceNote: "斜刀片鱼片增大面积、减薄厚度 → 后续滑熟时热量传递更快更均匀，避免外熟内生"
+  - action: "鱼片加盐 2g、料酒 10ml、白胡椒粉，轻轻抓匀，再加蛋清和干淀粉抓匀上浆"
+    durationSec: 120
+    scienceNote: "上浆是水煮鱼鱼片嫩滑的关键！蛋清蛋白质受热凝固形成保护膜 + 淀粉糊化形成凝胶层 → 双重屏障阻止鱼肉蛋白质过度收缩脱水。这就是为什么水煮鱼的鱼片滑嫩如豆腐"
+  - action: "鱼骨鱼头加姜片、料酒 10ml，冷水下锅焯水，撇去浮沫后捞出"
+    durationSec: 300
+    tempCelsius: 100
+    scienceNote: "焯水去除鱼骨血水中的腥味蛋白质"
+  - action: "锅中加 30ml 油，中火炒香郫县豆瓣酱、姜蒜片，炒出红油"
+    durationSec: 120
+    tempCelsius: 140
+    scienceNote: "豆瓣酱中的辣椒素和红色素都是脂溶性物质，需要用油炒才能充分释放颜色和辣味"
+  - action: "加入清水 800ml，放入焯好的鱼骨鱼头，大火煮沸后中火煮 10 分钟"
+    durationSec: 600
+    tempCelsius: 100
+    scienceNote: "鱼骨煮出的汤底含有明胶和鲜味氨基酸，是水煮鱼底汤的鲜味基础"
+  - action: "捞出鱼骨鱼头，连同焯水的豆芽一起铺在大碗底部"
+    scienceNote: "豆芽垫底：1) 隔开鱼片和碗底防止粘连；2) 吸收汤汁入味成为配菜"
+  - action: "汤底保持微沸（不翻滚），将鱼片逐片滑入，轻轻推散"
+    durationSec: 120
+    tempCelsius: 85
+    scienceNote: "微沸（85°C）是关键温度！大火沸腾的湍流会冲散上浆层让鱼片破碎；而 85°C 的温和热量让上浆层缓慢凝固包裹住鱼肉。鱼片变白不透明即熟，约 60-90 秒"
+  - action: "鱼片变白后连汤倒入铺好豆芽的大碗中，表面撒上干辣椒段和花椒"
+    scienceNote: "干辣椒和花椒此时还是'沉睡'状态，需要下一步的热油来'激活'"
+  - action: "另起锅烧热 50ml 油至冒烟（约 220°C），快速浇在辣椒花椒上"
+    tempCelsius: 220
+    scienceNote: "热油浇淋是水煮鱼最关键的一步！220°C 热油瞬间引发：1) 辣椒素溶入热油扩散→辣味均匀分布；2) 花椒中的山椒素受热释放→麻味激发；3) 干辣椒表面美拉德反应→焦香味。'滋啦'声 = 麻辣香气大爆发"
+relatedPrinciples: ["fish-protein-science", "fish-species-guide", "meat-velveting", "sichuan-pepper-science"]
+ingredientTags: ["鱼虾", "鱼", "草鱼"]
+---
+
+## 科学解析
+
+水煮鱼的名字有误导性——它的核心根本不是"水煮"，而是**上浆滑熟 + 热油激香**。
+
+两个关键技术：
+1. **上浆**：蛋清+淀粉形成双层保护膜 → 鱼片在汤中不散不柴
+2. **热油浇淋**：220°C 的油瞬间激发干辣椒和花椒的脂溶性风味物质 → 麻辣香气在碗内"爆炸"
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 鱼片碎了 | 沸腾太猛 / 搅动太多 | 保持微沸，鱼片滑入后不要翻动 |
+| 鱼片老了 | 煮太久 | 鱼片变白即熟，60-90 秒足够 |
+| 不够麻辣 | 热油温度不够 | 油必须烧至冒烟再浇，否则辣椒素释放不充分 |
+| 汤底不鲜 | 没用鱼骨煮汤 | 鱼骨鱼头煮 10 分钟提鲜是关键 |
+| 上浆脱落 | 淀粉太少 / 浆没抓匀 | 蛋清和淀粉要充分裹匀每一片 |
