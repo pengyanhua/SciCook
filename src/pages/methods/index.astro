@@ -1,0 +1,150 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+const recipes = await getCollection("recipes");
+
+// 统计每个烹饪方法的菜谱数量
+const methodCount = new Map<string, number>();
+for (const recipe of recipes) {
+  const cat = recipe.data.category;
+  methodCount.set(cat, (methodCount.get(cat) ?? 0) + 1);
+}
+
+// 烹饪方法定义：名称、英文、图标描述、科学简述
+const methods = [
+  {
+    name: "快炒",
+    eng: "Stir-fry",
+    icon: "🔥",
+    temp: "200-300°C",
+    science: "高温短时，美拉德反应与锁水的极限平衡。大火猛攻，食材表面瞬间失水形成焦化层，内部水分来不及逃逸。",
+  },
+  {
+    name: "炖煮",
+    eng: "Braise / Stew",
+    icon: "♨️",
+    temp: "85-100°C",
+    science: "低温长时间加热，胶原蛋白水解为明胶，肉质从\"韧\"变\"软糯\"。时间是这个方法的核心变量。",
+  },
+  {
+    name: "蒸制",
+    eng: "Steam",
+    icon: "💨",
+    temp: "100°C",
+    science: "100°C 蒸汽的潜热传递效率极高，且不直接接触食材——最温柔的高温烹饪，完美保留食材原味。",
+  },
+  {
+    name: "煎炸",
+    eng: "Pan-fry / Deep-fry",
+    icon: "🍳",
+    temp: "160-200°C",
+    science: "油脂作为传热介质，温度远超水的沸点。淀粉糊化成酥脆外壳，美拉德反应赋予金黄色泽和焦香。",
+  },
+  {
+    name: "凉拌",
+    eng: "Cold-dress",
+    icon: "🥗",
+    temp: "0-25°C",
+    science: "不加热烹饪，用酸（醋）、盐、辣实现化学\"烹饪\"——酸使蛋白质变性，盐通过渗透压改变质地。",
+  },
+  {
+    name: "烧烤",
+    eng: "Grill / Roast",
+    icon: "🔥",
+    temp: "180-300°C",
+    science: "红外辐射直接加热食材表面，不需要液体介质。表面美拉德反应和焦糖化同时进行，产生独特烟熏风味。",
+  },
+  {
+    name: "面食",
+    eng: "Dough & Noodles",
+    icon: "🍜",
+    temp: "100°C",
+    science: "面筋蛋白网络 + 淀粉糊化：揉面发展面筋，加热定型结构。水温决定面团性格——冷水筋道，热水柔软。",
+  },
+  {
+    name: "烘焙",
+    eng: "Bake",
+    icon: "🍞",
+    temp: "150-220°C",
+    science: "干热空气对流传热，水分从表面蒸发形成硬壳。内部水蒸气膨胀 + 酵母产气 → 蓬松结构。",
+  },
+];
+---
+
+<BaseLayout title="烹饪方法" description="按烹饪方法分类浏览所有菜谱，了解每种方法背后的科学原理">
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <!-- Header -->
+    <div class="mb-10">
+      <div class="font-mono text-xs text-gray-600 mb-2">MOD_05</div>
+      <h1 class="text-3xl font-bold text-gray-50 sm:text-4xl">
+        烹饪方法 <span class="text-brand-400">Methods</span>
+      </h1>
+      <p class="mt-3 text-lg text-gray-400">
+        每种烹饪方法都是一套独特的物理化学过程。选择方法，浏览对应的菜谱和科学原理。
+      </p>
+    </div>
+
+    <!-- Methods Grid -->
+    <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {methods.map((m) => {
+        const count = methodCount.get(m.name) ?? 0;
+        return (
+          <a
+            href={count > 0 ? `/methods/${encodeURIComponent(m.name)}` : undefined}
+            class:list={[
+              "group block rounded-xl border p-6 transition-all",
+              count > 0
+                ? "border-gray-800 bg-gray-900/50 hover:border-brand-500/50 hover:bg-gray-900 cursor-pointer"
+                : "border-gray-800/50 bg-gray-900/20 opacity-60 cursor-default",
+            ]}
+          >
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-2xl">{m.icon}</span>
+              {count > 0 && (
+                <span class="rounded-full bg-brand-500/15 border border-brand-500/30 px-2.5 py-0.5 text-xs font-mono text-brand-400">
+                  {count} 道菜谱
+                </span>
+              )}
+            </div>
+            <h3 class="text-lg font-semibold text-gray-100 group-hover:text-brand-400 transition-colors">
+              {m.name}
+            </h3>
+            <div class="font-mono text-xs text-gray-600 mb-3">{m.eng} · {m.temp}</div>
+            <p class="text-sm text-gray-400 leading-relaxed">{m.science}</p>
+          </a>
+        );
+      })}
+    </div>
+
+    <!-- Temperature Scale -->
+    <section class="mt-16 border-t border-gray-800 pt-10">
+      <h2 class="text-lg font-semibold text-gray-200 mb-6">
+        <span class="font-mono text-brand-500">#</span> 温度与方法对照
+      </h2>
+      <div class="overflow-x-auto">
+        <div class="relative h-16 min-w-[600px] rounded-lg bg-gray-900/50 border border-gray-800">
+          {/* Temperature gradient bar */}
+          <div class="absolute inset-x-4 top-3 h-3 rounded-full bg-gradient-to-r from-blue-500 via-yellow-500 to-red-500 opacity-30"></div>
+          {/* Method markers */}
+          <div class="absolute left-[5%] top-8 text-center">
+            <div class="text-xs font-mono text-blue-400">0°C</div>
+            <div class="text-xs text-gray-500">凉拌</div>
+          </div>
+          <div class="absolute left-[30%] top-8 text-center">
+            <div class="text-xs font-mono text-yellow-400">100°C</div>
+            <div class="text-xs text-gray-500">蒸/煮/面食</div>
+          </div>
+          <div class="absolute left-[55%] top-8 text-center">
+            <div class="text-xs font-mono text-orange-400">180°C</div>
+            <div class="text-xs text-gray-500">煎炸/烘焙</div>
+          </div>
+          <div class="absolute left-[80%] top-8 text-center">
+            <div class="text-xs font-mono text-red-400">300°C</div>
+            <div class="text-xs text-gray-500">快炒/烧烤</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

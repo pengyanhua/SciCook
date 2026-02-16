@@ -1,0 +1,127 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const recipes = await getCollection("recipes");
+  const categories = new Set<string>();
+  for (const recipe of recipes) {
+    categories.add(recipe.data.category);
+  }
+  return [...categories].map((method) => ({
+    params: { method },
+    props: { method },
+  }));
+}
+
+const { method } = Astro.props;
+const recipes = await getCollection("recipes");
+const matchedRecipes = recipes.filter((r) => r.data.category === method);
+
+// 方法描述映射
+const methodInfo: Record<string, { eng: string; science: string }> = {
+  "快炒": {
+    eng: "Stir-fry",
+    science: "高温短时，大火让食材表面迅速失水形成焦化层（美拉德反应），内部水分来不及逃逸——外焦内嫩的物理学本质。",
+  },
+  "炖煮": {
+    eng: "Braise / Stew",
+    science: "85-100°C 长时间加热，胶原蛋白缓慢水解为明胶（需要 45-90 分钟），肉质从韧硬变为软糯入口即化。时间是核心变量。",
+  },
+  "蒸制": {
+    eng: "Steam",
+    science: "100°C 蒸汽携带大量潜热（2260 kJ/kg），传热效率极高且不直接冲击食材。最适合保留食材原味和细嫩质地的烹饪方式。",
+  },
+  "煎炸": {
+    eng: "Pan-fry / Deep-fry",
+    science: "油脂传热温度远超水的沸点（160-200°C），让淀粉糊化形成酥脆外壳、美拉德反应赋予金黄色泽。复炸技术可进一步脱水达到极致酥脆。",
+  },
+  "凉拌": {
+    eng: "Cold-dress",
+    science: "不依赖热量，用化学手段「烹饪」：醋酸使蛋白质变性，盐通过渗透压改变食材质地，辣椒素刺激痛觉受体产生辣感。",
+  },
+  "烧烤": {
+    eng: "Grill / Roast",
+    science: "红外辐射直接加热食材表面，无需液体介质。表面同时发生美拉德反应和焦糖化，加上木炭/烟的酚类化合物→独特烟熏风味。",
+  },
+  "面食": {
+    eng: "Dough & Noodles",
+    science: "面筋蛋白（麦谷蛋白+麦醇溶蛋白）在水和机械力作用下形成三维网络，淀粉在 60°C+ 糊化定型。水温决定面团性格：冷水筋道，热水柔软。",
+  },
+  "烘焙": {
+    eng: "Bake",
+    science: "干热空气对流传热，食材表面水分蒸发形成硬壳，内部水蒸气和酵母产气共同膨胀→蓬松多孔结构。温度梯度创造外酥内软的质感。",
+  },
+};
+
+const info = methodInfo[method] ?? { eng: method, science: "" };
+const difficultyLabel = (d: number) => ["", "简单", "中等", "进阶"][d];
+
+function formatDuration(sec: number): string {
+  const min = Math.round(sec / 60);
+  return `${min}min`;
+}
+---
+
+<BaseLayout title={`${method} - 烹饪方法`} description={`${method}类菜谱合集及背后的科学原理`}>
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <!-- Header -->
+    <div class="mb-10">
+      <a href="/methods/" class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-brand-400 transition-colors mb-4">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        返回烹饪方法
+      </a>
+      <h1 class="text-3xl font-bold text-gray-50 sm:text-4xl">
+        {method}
+        <span class="ml-2 text-lg font-normal text-gray-500 font-mono">{info.eng}</span>
+      </h1>
+      <p class="mt-3 text-gray-400 leading-relaxed max-w-3xl">
+        {info.science}
+      </p>
+      <p class="mt-2 text-sm text-gray-500">
+        共 <span class="font-mono text-brand-400">{matchedRecipes.length}</span> 道菜谱
+      </p>
+    </div>
+
+    <!-- Recipes Grid -->
+    <div class="grid gap-4 sm:grid-cols-2">
+      {matchedRecipes.map((recipe) => (
+        <a
+          href={`/recipes/${recipe.id.replace(/\.mdx?$/, "")}`}
+          class="group block rounded-xl border border-gray-800 bg-gray-900/50 p-6 transition-all hover:border-brand-500/50 hover:bg-gray-900"
+        >
+          <div class="flex items-center gap-2 mb-3">
+            <span class="inline-block rounded-full bg-brand-500/15 border border-brand-500/30 px-2.5 py-0.5 text-xs font-mono text-brand-400">
+              {recipe.data.category}
+            </span>
+            <span class="text-xs text-gray-600 font-mono">
+              Lv.{recipe.data.difficulty} {difficultyLabel(recipe.data.difficulty)}
+            </span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-100 group-hover:text-brand-400 transition-colors">
+            {recipe.data.title}
+          </h3>
+          <p class="mt-2 text-sm text-gray-400 line-clamp-2">
+            {recipe.data.description}
+          </p>
+          <div class="mt-4 flex items-center gap-4 text-xs font-mono text-gray-600">
+            <span>{recipe.data.servings}人份</span>
+            <span>{formatDuration(recipe.data.totalTimeSec)}</span>
+            <span>peak {recipe.data.peakTempCelsius}°C</span>
+          </div>
+          {recipe.data.scienceTags.length > 0 && (
+            <div class="mt-3 flex flex-wrap gap-1.5">
+              {recipe.data.scienceTags.slice(0, 3).map((tag) => (
+                <span class="rounded-full bg-gray-800 px-2 py-0.5 text-xs text-gray-500">
+                  {tag}
+                </span>
+              ))}
+            </div>
+          )}
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
