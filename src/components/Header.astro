@@ -1,4 +1,6 @@
 ---
+import SearchModal from "@/components/SearchModal";
+
 const navItems = [
   { label: "首页", href: "/" },
   { label: "食材筛选", href: "/tags/" },
@@ -41,18 +43,43 @@ const currentPath = Astro.url.pathname;
           </a>
         </li>
       ))}
+      <li>
+        <button
+          id="search-btn-desktop"
+          class="ml-1 flex items-center gap-2 rounded-md px-3 py-2 text-sm text-gray-400 hover:bg-gray-800 hover:text-gray-200 transition-colors"
+          aria-label="搜索"
+        >
+          <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+          </svg>
+          <kbd class="hidden rounded border border-gray-700 bg-gray-800 px-1.5 py-0.5 font-mono text-[10px] text-gray-500 lg:inline">Ctrl K</kbd>
+        </button>
+      </li>
     </ul>
 
-    <!-- Mobile Menu Button -->
-    <button
-      id="mobile-menu-btn"
-      class="flex h-9 w-9 items-center justify-center rounded-md text-gray-400 hover:bg-gray-800 md:hidden"
-      aria-label="打开菜单"
-    >
-      <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-      </svg>
-    </button>
+    <div class="flex items-center gap-1">
+      <!-- Mobile Search Button -->
+      <button
+        id="search-btn-mobile"
+        class="flex h-9 w-9 items-center justify-center rounded-md text-gray-400 hover:bg-gray-800 md:hidden"
+        aria-label="搜索"
+      >
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
+        </svg>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button
+        id="mobile-menu-btn"
+        class="flex h-9 w-9 items-center justify-center rounded-md text-gray-400 hover:bg-gray-800 md:hidden"
+        aria-label="打开菜单"
+      >
+        <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
+    </div>
   </nav>
 
   <!-- Mobile Nav -->
@@ -77,10 +104,21 @@ const currentPath = Astro.url.pathname;
   </div>
 </header>
 
+<!-- Search Modal (React, client:load) -->
+<SearchModal client:load />
+
 <script>
   const btn = document.getElementById("mobile-menu-btn");
   const menu = document.getElementById("mobile-menu");
   btn?.addEventListener("click", () => {
     menu?.classList.toggle("hidden");
+  });
+
+  // Search buttons trigger
+  document.getElementById("search-btn-desktop")?.addEventListener("click", () => {
+    (window as any).__openSearch?.();
+  });
+  document.getElementById("search-btn-mobile")?.addEventListener("click", () => {
+    (window as any).__openSearch?.();
   });
 </script>
