@@ -57,10 +57,10 @@ const modules = [
   },
   {
     id: "MOD_02",
-    name: "参数层",
+    name: "食材筛选",
     eng: "Variables",
-    desc: "食材理化数据库：烟点、含水量、纤维密度，一切皆可量化。",
-    href: "/variables/",
+    desc: "按食材标签浏览所有相关原理、菜谱和调试指南。",
+    href: "/tags/",
   },
   {
     id: "MOD_03",
@@ -75,6 +75,20 @@ const modules = [
     eng: "Debugging",
     desc: "烹饪失败？这里有 Root Cause Analysis。",
     href: "/debug/",
+  },
+  {
+    id: "MOD_05",
+    name: "烹饪方法",
+    eng: "Methods",
+    desc: "快炒、炖煮、蒸制、煎炸等 8 大类方法及背后的科学。",
+    href: "/methods/",
+  },
+  {
+    id: "MOD_06",
+    name: "工具箱",
+    eng: "Tools",
+    desc: "单位换算器、热力图谱、食材数据库——量化烹饪的辅助工具。",
+    href: "/tools/",
   },
 ];
 ---
@@ -180,7 +194,7 @@ const modules = [
         <p class="mt-2 text-gray-500">像操作系统一样，分层组织烹饪知识。</p>
       </div>
 
-      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {modules.map((m) => (
           <a
             href={m.href}

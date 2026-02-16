@@ -1,0 +1,63 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+
+const tools = [
+  {
+    id: "TOOL_01",
+    name: "单位换算器",
+    eng: "Converter",
+    desc: "克、斤、盎司、汤匙、杯、°C、°F…… 烹饪中的度量单位一键互转。",
+    href: "/tools/converter",
+    icon: "⚖️",
+  },
+  {
+    id: "TOOL_02",
+    name: "热力图谱",
+    eng: "Heat Map",
+    desc: "所有菜谱的温度数据可视化。查看烹饪方法温度区间，追踪步骤温度变化。",
+    href: "/tools/heatmap",
+    icon: "🌡️",
+  },
+  {
+    id: "TOOL_03",
+    name: "食材数据库",
+    eng: "Ingredient DB",
+    desc: "从全部菜谱聚合提取的食材数据：使用频次、常见用量、出现菜谱。",
+    href: "/tools/ingredients",
+    icon: "🗄️",
+  },
+];
+---
+
+<BaseLayout title="工具箱" description="烹饪辅助工具：单位换算器、热力图谱、食材数据库">
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <div class="mb-10">
+      <div class="font-mono text-xs text-gray-600 mb-2">MOD_06</div>
+      <h1 class="text-3xl font-bold text-gray-50 sm:text-4xl">
+        工具箱 <span class="text-brand-400">Tools</span>
+      </h1>
+      <p class="mt-3 text-lg text-gray-400">
+        量化烹饪的实用辅助工具。换算单位、可视化温度、查询食材数据。
+      </p>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-3">
+      {tools.map((t) => (
+        <a
+          href={t.href}
+          class="group block rounded-xl border border-gray-800 bg-gray-900/50 p-6 transition-all hover:border-brand-500/50 hover:bg-gray-900"
+        >
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-2xl">{t.icon}</span>
+            <span class="font-mono text-xs text-gray-600">{t.id}</span>
+          </div>
+          <h3 class="text-lg font-semibold text-gray-100 group-hover:text-brand-400 transition-colors">
+            {t.name}
+          </h3>
+          <div class="font-mono text-xs text-gray-600 mb-3">{t.eng}</div>
+          <p class="text-sm text-gray-400 leading-relaxed">{t.desc}</p>
+        </a>
+      ))}
+    </div>
+  </div>
+</BaseLayout>
