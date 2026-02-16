@@ -1,0 +1,158 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Card from "@/components/Card.astro";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const principles = await getCollection("principles");
+  const recipes = await getCollection("recipes");
+  const debugging = await getCollection("debugging");
+
+  // 收集所有标签
+  const allTags = new Set<string>();
+  for (const entry of [...principles, ...recipes, ...debugging]) {
+    for (const tag of entry.data.ingredientTags ?? []) {
+      allTags.add(tag);
+    }
+  }
+
+  return [...allTags].map((tag) => ({
+    params: { tag },
+    props: { tag },
+  }));
+}
+
+const { tag } = Astro.props;
+
+const principles = await getCollection("principles");
+const recipes = await getCollection("recipes");
+const debugging = await getCollection("debugging");
+
+// 筛选包含该标签的内容
+const matchedPrinciples = principles.filter((e) =>
+  e.data.ingredientTags?.includes(tag)
+);
+const matchedRecipes = recipes.filter((e) =>
+  e.data.ingredientTags?.includes(tag)
+);
+const matchedDebugging = debugging.filter((e) =>
+  e.data.ingredientTags?.includes(tag)
+);
+
+const totalCount =
+  matchedPrinciples.length + matchedRecipes.length + matchedDebugging.length;
+
+const difficultyLabel = (d: number) => ["", "简单", "中等", "进阶"][d];
+
+function formatDuration(sec: number): string {
+  const min = Math.round(sec / 60);
+  return `${min}min`;
+}
+---
+
+<BaseLayout title={`${tag} - 食材筛选`} description={`关于「${tag}」的所有科学原理和菜谱`}>
+  <div class="mx-auto max-w-6xl px-6 py-12">
+    <!-- Header -->
+    <div class="mb-10">
+      <a href="/tags/" class="inline-flex items-center gap-1 text-sm text-gray-500 hover:text-brand-400 transition-colors mb-4">
+        <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+        </svg>
+        返回食材筛选
+      </a>
+      <h1 class="text-3xl font-bold text-gray-50 sm:text-4xl">
+        {tag}
+      </h1>
+      <p class="mt-2 text-gray-400">
+        共找到 <span class="font-mono text-brand-400">{totalCount}</span> 篇相关内容
+      </p>
+    </div>
+
+    <!-- Principles Section -->
+    {matchedPrinciples.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-xl font-bold text-gray-100 mb-4">
+          <span class="font-mono text-brand-500">#</span> 相关原理
+          <span class="ml-2 text-sm font-normal text-gray-500">({matchedPrinciples.length})</span>
+        </h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {matchedPrinciples.map((article) => (
+            <Card
+              title={article.data.title}
+              description={article.data.description}
+              href={`/kernel/${article.id.replace(/\.mdx?$/, "")}`}
+              field={article.data.field}
+              tag={article.data.tags[0]}
+            />
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Recipes Section -->
+    {matchedRecipes.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-xl font-bold text-gray-100 mb-4">
+          <span class="font-mono text-brand-500">#</span> 相关菜谱
+          <span class="ml-2 text-sm font-normal text-gray-500">({matchedRecipes.length})</span>
+        </h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {matchedRecipes.map((recipe) => (
+            <a
+              href={`/recipes/${recipe.id.replace(/\.mdx?$/, "")}`}
+              class="group block rounded-xl border border-gray-800 bg-gray-900/50 p-6 transition-all hover:border-brand-500/50 hover:bg-gray-900"
+            >
+              <div class="flex items-center gap-2 mb-3">
+                <span class="inline-block rounded-full bg-brand-500/15 border border-brand-500/30 px-2.5 py-0.5 text-xs font-mono text-brand-400">
+                  {recipe.data.category}
+                </span>
+                <span class="text-xs text-gray-600 font-mono">
+                  Lv.{recipe.data.difficulty} {difficultyLabel(recipe.data.difficulty)}
+                </span>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-100 group-hover:text-brand-400 transition-colors">
+                {recipe.data.title}
+              </h3>
+              <p class="mt-2 text-sm text-gray-400 line-clamp-2">
+                {recipe.data.description}
+              </p>
+              <div class="mt-4 flex items-center gap-4 text-xs font-mono text-gray-600">
+                <span>{recipe.data.servings}人份</span>
+                <span>{formatDuration(recipe.data.totalTimeSec)}</span>
+                <span>peak {recipe.data.peakTempCelsius}°C</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- Debugging Section -->
+    {matchedDebugging.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-xl font-bold text-gray-100 mb-4">
+          <span class="font-mono text-brand-500">#</span> 相关调试
+          <span class="ml-2 text-sm font-normal text-gray-500">({matchedDebugging.length})</span>
+        </h2>
+        <div class="grid gap-4 sm:grid-cols-2">
+          {matchedDebugging.map((article) => (
+            <a
+              href={`/debug/${article.id.replace(/\.mdx?$/, "")}`}
+              class="group block rounded-xl border border-red-500/20 bg-gray-900/50 p-6 transition-all hover:border-red-500/40 hover:bg-gray-900"
+            >
+              <span class="inline-block rounded-full bg-red-500/15 border border-red-500/30 px-2.5 py-0.5 text-xs font-mono text-red-400 mb-3">
+                BUG
+              </span>
+              <h3 class="text-lg font-semibold text-gray-100 group-hover:text-red-400 transition-colors">
+                {article.data.title}
+              </h3>
+              <p class="mt-2 text-sm text-gray-400 line-clamp-2">
+                {article.data.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </section>
+    )}
+  </div>
+</BaseLayout>

@@ -9,6 +9,7 @@ const principles = defineCollection({
     tags: z.array(z.string()),
     date: z.string(),
     relatedRecipes: z.array(z.string()).optional(),
+    ingredientTags: z.array(z.string()).optional(),
   }),
 });
 
@@ -42,6 +43,7 @@ const recipes = defineCollection({
       })
     ),
     relatedPrinciples: z.array(z.string()).optional(),
+    ingredientTags: z.array(z.string()).optional(),
   }),
 });
 
@@ -54,6 +56,7 @@ const debugging = defineCollection({
     rootCause: z.string(),
     field: z.enum(["physics", "chemistry", "biology"]),
     date: z.string(),
+    ingredientTags: z.array(z.string()).optional(),
   }),
 });
 
