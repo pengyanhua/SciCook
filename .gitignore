@@ -33,4 +33,4 @@ Thumbs.db
 # debug
 npm-debug.log*
 
-docs/
+docs/*.md
