@@ -25,6 +25,7 @@ SciCook 是一个**美食底层逻辑库**，将烹饪知识按操作系统的�
 | `MOD_03` | **烹饪方法 (Methods)** | 快炒、炖煮、蒸制、煎炸等 8 大类方法及背后的科学 |
 | `MOD_04` | **菜谱库 (Algorithms)** | 精确到克、秒、°C 的标准作业程序 (SOP) |
 | `MOD_05` | **调试区 (Debugging)** | 烹饪失败的 Root Cause Analysis |
+| `MOD_06` | **工具箱 (Tools)** | 单位换算器、温度热力图谱、食材数据库 |
 
 ---
 
@@ -62,6 +63,10 @@ SciCook 是一个**美食底层逻辑库**，将烹饪知识按操作系统的�
 - **烹饪方法分类** — 8 大烹饪方法页面，含温度对照图，按方法浏览菜谱
 - **全站搜索** — Fuse.js 模糊搜索，`Ctrl+K` 快捷键，覆盖原理/菜谱/调试
 - **结构化菜谱** — 每道菜精确到克、秒、°C，每步附科学注释
+- **工具箱** — 单位换算器 (重量/体积/温度)、温度热力图谱 (SVG)、食材数据库
+- **SEO 优化** — Open Graph / Twitter Card 社交预览、Recipe JSON-LD 结构化数据、canonical URL、sitemap
+- **PWA 支持** — Web App Manifest、主屏图标 (192/512)、Apple Touch Icon
+- **数据统计** — Google Analytics (GA4) 全站集成
 - **响应式设计** — 深色主题，移动端友好
 
 ---
@@ -73,6 +78,8 @@ SciCook 是一个**美食底层逻辑库**，将烹饪知识按操作系统的�
 样式        Tailwind CSS 4
 内容        MDX + Astro Content Collections + Zod Schema
 搜索        Fuse.js (构建时生成索引，客户端模糊搜索)
+SEO         Open Graph · Twitter Card · JSON-LD · Sitemap
+统计        Google Analytics (GA4)
 部署        Cloudflare Pages
 ```
 
@@ -115,7 +122,10 @@ src/
 │   ├── Header.astro            # 顶部导航 + 搜索入口
 │   ├── Footer.astro            # 底部导航 + GitHub 链接
 │   ├── Card.astro              # 文章卡片
-│   └── SearchModal.tsx         # React 搜索弹窗 (Fuse.js)
+│   ├── SearchModal.tsx         # React 搜索弹窗 (Fuse.js)
+│   ├── UnitConverter.tsx       # 单位换算器 (重量/体积/温度)
+│   ├── HeatMap.tsx             # 温度热力图谱 (React SVG)
+│   └── IngredientDB.tsx        # 食材数据库 (搜索/筛选/统计)
 ├── layouts/
 │   ├── BaseLayout.astro        # 基础布局
 │   └── ArticleLayout.astro     # 文章详情布局
@@ -126,7 +136,10 @@ src/
 │   ├── recipes/                # 菜谱库路由
 │   ├── kernel/                 # 原理层路由
 │   ├── debug/                  # 调试区路由
-│   └── search-index.json.ts    # 搜索索引 (构建时生成)
+│   ├── tools/                  # 工具箱 (换算器/热力图/食材库)
+│   ├── search-index.json.ts    # 搜索索引 (构建时生成)
+│   ├── heatmap-data.json.ts    # 热力图数据 (构建时生成)
+│   └── ingredient-data.json.ts # 食材数据 (构建时生成)
 └── styles/
     └── global.css              # 全局样式 + 主题变量
 ```
@@ -231,9 +244,9 @@ npx wrangler pages deploy dist --project-name=scicook
 - [x] Phase 1 — MVP：项目脚手架、首页、4 篇原理文章、2 个结构化菜谱
 - [x] Phase 2 — 内容扩充：调料科学 (8 篇)、面食专题 (3+5)、鱼类专题 (2+10+2)
 - [x] Phase 3 — 导航增强：食材筛选、烹饪方法分类、全站搜索
-- [ ] Phase 4 — 交互增强：单位换算器、热力图谱、食材数据库
+- [x] Phase 4 — 交互增强：单位换算器、温度热力图谱、食材数据库
 - [ ] Phase 5 — AI 集成：LLM 菜谱重构、智能问答
-- [ ] Phase 6 — 增长：SEO 优化、社交分享、PWA、用户互动
+- [x] Phase 6 — 增长：SEO (OG/Twitter/JSON-LD/Sitemap)、PWA、Google Analytics
 
 ---
 

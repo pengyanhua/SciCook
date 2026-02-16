@@ -24,9 +24,39 @@ function formatDuration(sec: number): string {
   }
   return `${sec}s`;
 }
+
+function toISO8601(sec: number): string {
+  const h = Math.floor(sec / 3600);
+  const m = Math.floor((sec % 3600) / 60);
+  const s = sec % 60;
+  let str = "PT";
+  if (h) str += `${h}H`;
+  if (m) str += `${m}M`;
+  if (s) str += `${s}S`;
+  return str === "PT" ? "PT0S" : str;
+}
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Recipe",
+  name: data.title,
+  description: data.description,
+  author: { "@type": "Organization", name: "理科生下厨房 SciCook" },
+  recipeCategory: data.category,
+  recipeCuisine: "Chinese",
+  recipeYield: `${data.servings} 份`,
+  totalTime: toISO8601(data.totalTimeSec),
+  recipeIngredient: data.ingredients.map((i) => `${i.name} ${i.amountG}${i.unit || "g"}`),
+  recipeInstructions: data.steps.map((s, i) => ({
+    "@type": "HowToStep",
+    position: i + 1,
+    text: s.action,
+  })),
+};
 ---
 
 <BaseLayout title={data.title} description={data.description}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
   <article class="mx-auto max-w-3xl px-6 py-12">
     <!-- Header -->
     <header class="mb-10">
