@@ -1,0 +1,68 @@
+---
+title: "韭菜虾仁蒸饺（烫面法）"
+description: "烫面皮淀粉糊化→软糯微透明 + 虾仁颗粒鲜弹 + 蒸汽冷凝传热→均匀不破皮。"
+category: "蒸制"
+difficulty: 2
+scienceTags: ["烫面", "淀粉糊化", "蒸汽冷凝", "海鲜馅"]
+date: "2026-02-18"
+servings: 4
+totalTimeSec: 2700
+peakTempCelsius: 100
+ingredients:
+  - { name: "中筋面粉", amountG: 250, role: "主料" }
+  - { name: "热水", amountG: 165, unit: "ml", role: "辅料", notes: "70-80°C，非沸水" }
+  - { name: "食盐", amountG: 1, unit: "g", role: "调味", notes: "面团用" }
+  - { name: "鲜虾仁", amountG: 250, role: "主料", notes: "去虾线，吸干水分" }
+  - { name: "韭菜", amountG: 150, role: "主料", notes: "切碎，包前再加" }
+  - { name: "生姜", amountG: 8, unit: "g", role: "辅料", notes: "切末" }
+  - { name: "鸡蛋清", amountG: 30, unit: "g", role: "辅料", notes: "约1个蛋清" }
+  - { name: "生抽", amountG: 8, unit: "ml", role: "调味" }
+  - { name: "料酒", amountG: 10, unit: "ml", role: "调味", notes: "去腥" }
+  - { name: "香油", amountG: 10, unit: "ml", role: "调味" }
+  - { name: "食盐", amountG: 2, unit: "g", role: "调味", notes: "馅料用" }
+  - { name: "白胡椒粉", amountG: 1, unit: "g", role: "调味" }
+steps:
+  - action: "面粉加 1g 盐混匀，缓缓倒入 70-80°C 热水，边倒边用筷子搅成絮状"
+    scienceNote: "70-80°C 热水使大部分面筋蛋白变性（>60°C 变性阈值），同时淀粉开始糊化 → 面团柔软无弹性，蒸后呈半透明状"
+  - action: "稍凉后下手揉成光滑面团，盖保鲜膜醒面"
+    durationSec: 900
+    scienceNote: "烫面面团不需要长时间醒面（面筋极少），15 min 足够让水分均匀分布、温度降至室温"
+  - action: "虾仁切成黄豆大小的粒，留 1/4 切大粒增加口感层次"
+    scienceNote: "虾仁切粒而非剁泥——虾的肌球蛋白在 40-50°C 就变性（比猪肉低 10°C），剁太碎加热后会变成橡皮质感"
+  - action: "虾仁中加入盐、生抽、料酒、白胡椒粉、蛋清，轻拌均匀"
+    durationSec: 60
+    scienceNote: "蛋清包裹虾仁形成保护层，加热时减缓水分流失。轻拌即可——虾仁不需要像猪肉那样搅打上劲"
+  - action: "加入姜末和香油拌匀，冷藏腌制"
+    durationSec: 900
+    scienceNote: "冷藏让蛋清和调味充分渗透；姜末中的姜辣素去除虾腥味；香油锁水防氧化"
+  - action: "包之前取出馅料，加入韭菜碎轻轻翻拌"
+    scienceNote: "韭菜必须包前才加——韭菜遇盐后渗透压脱水极快（5 min 内大量出水），早加会让馅料变成汤"
+  - action: "面团搓条切 8g 小剂子，擀成 7-8cm 圆皮，包成四喜蒸饺或圆肚形"
+    scienceNote: "烫面皮比冷水面皮更软更粘，擀皮时多撒干粉防粘。剂子比水饺略小（8g vs 10g），因为蒸制不需要厚底兜汤"
+  - action: "蒸笼垫油纸或刷油，摆入蒸饺间距 2cm，大火蒸 8-10 分钟"
+    durationSec: 540
+    tempCelsius: 100
+    scienceNote: "蒸汽冷凝传热效率极高（每克蒸汽释放 2260J 潜热），比水煮更快熟且无翻滚冲击。大火保证蒸汽量充足"
+relatedPrinciples: ["dough-water-temp", "dumpling-filling-science", "dumpling-wrapper-science", "dumpling-cooking-science"]
+ingredientTags: ["面粉", "鱼虾", "蔬菜"]
+---
+
+## 科学解析
+
+蒸饺与水饺是两种完全不同的技术路线：
+
+- **面团**：烫面（蛋白变性 + 淀粉糊化）vs 冷水面（面筋最大化）
+- **馅料**：虾仁轻拌保粒感 vs 猪肉搅打成蛋白网络
+- **煮法**：蒸汽冷凝传热（温和、高效）vs 水对流传热（翻滚、冲击）
+
+> 一句话总结：蒸饺 = 最温和的加热方式 × 最柔软的面皮 × 最鲜嫩的馅料。
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 皮太硬 | 水温不够热 / 水加少了 | 确保 70-80°C，水粉比约 2:3 |
+| 皮破了 | 擀太薄 / 蒸笼没刷油粘底扯破 | 垫油纸，皮不要擀太薄 |
+| 虾仁发柴 | 蒸太久 / 虾仁切太碎 | 控制 8-10 min，保留颗粒感 |
+| 馅出水 | 韭菜加太早 / 没沥干虾仁水分 | 韭菜包前加，虾仁用纸巾吸干 |
+| 蒸饺粘连 | 间距不够 / 没垫油纸 | 间距 2cm+，垫油纸或刷油 |

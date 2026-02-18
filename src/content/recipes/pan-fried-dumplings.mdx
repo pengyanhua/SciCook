@@ -1,0 +1,83 @@
+---
+title: "煎饺 / 锅贴（半烫面冰花底）"
+description: "半烫面兼顾韧与软 + 白菜盐杀渗透压脱水 + 先煎后焖复合传热 = 底脆顶软的冰花锅贴。"
+category: "煎炸"
+difficulty: 2
+scienceTags: ["半烫面", "美拉德反应", "复合传热", "渗透压脱水"]
+date: "2026-02-18"
+servings: 4
+totalTimeSec: 3000
+peakTempCelsius: 200
+ingredients:
+  - { name: "中筋面粉", amountG: 300, role: "主料" }
+  - { name: "开水", amountG: 90, unit: "ml", role: "辅料", notes: "烫面用，90°C+" }
+  - { name: "冷水", amountG: 60, unit: "ml", role: "辅料", notes: "冷水面部分" }
+  - { name: "食盐", amountG: 1, unit: "g", role: "调味", notes: "面团用" }
+  - { name: "猪肉馅", amountG: 250, role: "主料", notes: "三肥七瘦" }
+  - { name: "大白菜", amountG: 300, role: "主料", notes: "取菜叶部分" }
+  - { name: "大葱", amountG: 60, role: "辅料", notes: "切碎" }
+  - { name: "生姜", amountG: 10, unit: "g", role: "辅料", notes: "切末" }
+  - { name: "生抽", amountG: 15, unit: "ml", role: "调味" }
+  - { name: "蚝油", amountG: 10, unit: "ml", role: "调味" }
+  - { name: "食盐", amountG: 5, unit: "g", role: "调味", notes: "馅料+白菜杀水共用" }
+  - { name: "香油", amountG: 10, unit: "ml", role: "调味" }
+  - { name: "白胡椒粉", amountG: 2, unit: "g", role: "调味" }
+  - { name: "食用油", amountG: 15, unit: "ml", role: "辅料", notes: "煎制用" }
+  - { name: "面粉", amountG: 10, unit: "g", role: "辅料", notes: "冰花水用，面粉:水=1:10" }
+steps:
+  - action: "制半烫面：150g 面粉倒入开水搅成絮状（烫面部分）；另 150g 面粉加冷水和盐搅成絮状（冷水部分）"
+    scienceNote: "半烫面 = 50% 蛋白变性(软糯) + 50% 面筋完好(韧性)。这个比例让锅贴皮软到可以折叠，又韧到耐煎不裂"
+  - action: "两团合在一起揉成光滑面团，盖保鲜膜醒面"
+    durationSec: 1200
+    scienceNote: "两种面团揉合后，冷水部分的面筋蛋白在整体面团中形成骨架，烫面部分的糊化淀粉填充其中——类似纤维增强复合材料"
+  - action: "白菜洗净切碎，撒 3g 盐拌匀静置 15 分钟，挤干水分"
+    durationSec: 900
+    scienceNote: "渗透压脱水：盐浓度 > 白菜细胞液浓度 → 水分从细胞内向外渗透。300g 白菜可挤出 80-100ml 水。不挤水 → 馅出汤 → 锅贴底部泡软煎不脆"
+  - action: "猪肉馅加入生抽、蚝油、2g 盐、白胡椒粉，朝一个方向搅拌 2 分钟上劲"
+    durationSec: 120
+    scienceNote: "盐离子促进肌球蛋白溶出，单方向搅拌让蛋白质定向排列成凝胶网络 → 馅料有弹性"
+  - action: "分 3 次加入花椒水或清水共 40ml，每次搅至水分吸收再加"
+    scienceNote: "蛋白网络吸水膨胀。锅贴馅打水量比水饺少（40ml vs 50-100ml），因为白菜本身会贡献水分"
+  - action: "加入挤干的白菜碎、葱碎、姜末，淋香油拌匀"
+    scienceNote: "白菜已经脱水，此时加入不会再大量出水。香油最后加——封住蛋白网络的水分"
+  - action: "面团搓条切 12g 剂子，擀成椭圆形皮（长约 10cm），包成锅贴型（中间捏合，两端开口）"
+    scienceNote: "锅贴用椭圆形皮（非圆形）→ 底部平整面积更大 → 接触锅面更充分 → 脆底更均匀。两端开口让蒸汽排出，防内压撑破"
+  - action: "平底锅中火热油，将锅贴紧密排列码入，煎 2-3 分钟至底部金黄"
+    durationSec: 150
+    tempCelsius: 180
+    scienceNote: "底部温度达 160-200°C → 美拉德反应（氨基酸+还原糖→棕色风味化合物）→ 产生水煮和蒸制无法获得的焦香风味"
+  - action: "调冰花水（10g 面粉 + 100ml 水搅匀），沿锅边倒入至锅贴高度 1/3，盖盖焖 5 分钟"
+    durationSec: 300
+    tempCelsius: 100
+    scienceNote: "复合传热：底部继续传导加热（脆壳），上部蒸汽冷凝传热（馅料熟透）。面粉水中的淀粉会糊化→脱水→形成金色蕾丝脆片=冰花"
+  - action: "揭盖，中火收干水分至冰花定型酥脆，关火倒扣出锅"
+    durationSec: 120
+    tempCelsius: 200
+    scienceNote: "收干阶段淀粉薄膜从凝胶态脱水变成玻璃态 → 酥脆。倒扣让冰花面朝上展示"
+relatedPrinciples: ["dough-water-temp", "gluten-science", "dumpling-filling-science", "dumpling-wrapper-science", "dumpling-cooking-science"]
+ingredientTags: ["面粉", "肉类", "猪肉", "白菜", "蔬菜"]
+---
+
+## 科学解析
+
+煎饺/锅贴的精妙在于**复合传热**——一次烹饪同时实现两种口感：
+
+- **底部**：传导传热 (200°C) → 美拉德反应 → 焦脆金黄
+- **上部**：蒸汽冷凝传热 (100°C) → 柔软多汁
+
+三条技术线的完美交汇：
+
+1. **面团**：半烫面（软韧平衡）→ 底部耐煎成脆壳，顶部柔软可折叠
+2. **馅料**：白菜盐杀脱水 + 肉馅打水 → 多汁但不出汤
+3. **煎法**：先煎（美拉德）→ 加水焖（蒸汽穿透）→ 收干（冰花定型）
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 底部焦糊 | 火太大 / 煎太久 | 中火，底部金黄即加水 |
+| 底部不脆 | 水太多没收干 / 火太小 | 揭盖后中火收干至滋滋响 |
+| 冰花散碎 | 面粉水比例错 / 倒入太多 | 面粉:水=1:10，倒至 1/3 高 |
+| 馅出汤底泡软 | 白菜没挤干水 | 白菜盐杀后用力挤，越干越好 |
+| 皮太硬 | 冷水面比例太高 | 保证烫面部分占 50% |
+| 皮煎裂 | 面团太干 / 没醒面 | 适当加水，醒面 20 min |
