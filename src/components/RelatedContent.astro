@@ -1,0 +1,282 @@
+---
+import { getCollection } from "astro:content";
+
+interface Props {
+  collection: "principles" | "recipes" | "debugging";
+  slug: string;
+  relatedRecipes?: string[];
+  relatedPrinciples?: string[];
+  ingredientTags?: string[];
+}
+
+const {
+  collection: currentCollection,
+  slug: currentSlug,
+  relatedRecipes = [],
+  relatedPrinciples = [],
+  ingredientTags = [],
+} = Astro.props;
+
+const [allPrinciples, allRecipes, allDebugging] = await Promise.all([
+  getCollection("principles"),
+  getCollection("recipes"),
+  getCollection("debugging"),
+]);
+
+const toSlug = (id: string) => id.replace(/\.mdx?$/, "");
+
+type Item = {
+  title: string;
+  description: string;
+  href: string;
+  type: "principles" | "recipes" | "debugging";
+  field?: string;
+  score: number;
+};
+
+const seen = new Set<string>();
+seen.add(`${currentCollection}:${currentSlug}`);
+const items: Item[] = [];
+
+function add(item: Item, key: string) {
+  if (seen.has(key)) return;
+  seen.add(key);
+  items.push(item);
+}
+
+// --- 1. Explicit relatedRecipes ---
+for (const id of relatedRecipes) {
+  const r = allRecipes.find((e) => toSlug(e.id) === id);
+  if (r)
+    add(
+      {
+        title: r.data.title,
+        description: r.data.description,
+        href: `/recipes/${toSlug(r.id)}/`,
+        type: "recipes",
+        score: 100,
+      },
+      `recipes:${toSlug(r.id)}`
+    );
+}
+
+// --- 2. Explicit relatedPrinciples ---
+for (const id of relatedPrinciples) {
+  const p = allPrinciples.find((e) => toSlug(e.id) === id);
+  if (p)
+    add(
+      {
+        title: p.data.title,
+        description: p.data.description,
+        href: `/kernel/${toSlug(p.id)}/`,
+        type: "principles",
+        field: p.data.field,
+        score: 100,
+      },
+      `principles:${toSlug(p.id)}`
+    );
+}
+
+// --- 3. Reverse lookup: sibling principles via shared recipes ---
+if (currentCollection === "principles") {
+  for (const r of allRecipes) {
+    if (r.data.relatedPrinciples?.includes(currentSlug)) {
+      add(
+        {
+          title: r.data.title,
+          description: r.data.description,
+          href: `/recipes/${toSlug(r.id)}/`,
+          type: "recipes",
+          score: 80,
+        },
+        `recipes:${toSlug(r.id)}`
+      );
+      for (const ps of r.data.relatedPrinciples || []) {
+        const p = allPrinciples.find((e) => toSlug(e.id) === ps);
+        if (p)
+          add(
+            {
+              title: p.data.title,
+              description: p.data.description,
+              href: `/kernel/${toSlug(p.id)}/`,
+              type: "principles",
+              field: p.data.field,
+              score: 60,
+            },
+            `principles:${toSlug(p.id)}`
+          );
+      }
+    }
+  }
+}
+
+// --- 4. Reverse lookup: sibling recipes via shared principles ---
+if (currentCollection === "recipes") {
+  for (const p of allPrinciples) {
+    if (p.data.relatedRecipes?.includes(currentSlug)) {
+      add(
+        {
+          title: p.data.title,
+          description: p.data.description,
+          href: `/kernel/${toSlug(p.id)}/`,
+          type: "principles",
+          field: p.data.field,
+          score: 80,
+        },
+        `principles:${toSlug(p.id)}`
+      );
+      for (const rs of p.data.relatedRecipes || []) {
+        const r = allRecipes.find((e) => toSlug(e.id) === rs);
+        if (r)
+          add(
+            {
+              title: r.data.title,
+              description: r.data.description,
+              href: `/recipes/${toSlug(r.id)}/`,
+              type: "recipes",
+              score: 60,
+            },
+            `recipes:${toSlug(r.id)}`
+          );
+      }
+    }
+  }
+}
+
+// --- 5. ingredientTags overlap ---
+if (ingredientTags.length > 0) {
+  const tagSet = new Set(ingredientTags);
+
+  for (const d of allDebugging) {
+    const s = toSlug(d.id);
+    const overlap = (d.data.ingredientTags || []).filter((t: string) =>
+      tagSet.has(t)
+    ).length;
+    if (overlap > 0)
+      add(
+        {
+          title: d.data.title,
+          description: d.data.description,
+          href: `/debug/${s}/`,
+          type: "debugging",
+          field: d.data.field,
+          score: overlap * 10,
+        },
+        `debugging:${s}`
+      );
+  }
+
+  if (currentCollection !== "principles") {
+    for (const p of allPrinciples) {
+      const s = toSlug(p.id);
+      const overlap = (p.data.ingredientTags || []).filter((t: string) =>
+        tagSet.has(t)
+      ).length;
+      if (overlap > 0)
+        add(
+          {
+            title: p.data.title,
+            description: p.data.description,
+            href: `/kernel/${s}/`,
+            type: "principles",
+            field: p.data.field,
+            score: overlap * 10,
+          },
+          `principles:${s}`
+        );
+    }
+  }
+
+  if (currentCollection !== "recipes") {
+    for (const r of allRecipes) {
+      const s = toSlug(r.id);
+      const overlap = (r.data.ingredientTags || []).filter((t: string) =>
+        tagSet.has(t)
+      ).length;
+      if (overlap > 0)
+        add(
+          {
+            title: r.data.title,
+            description: r.data.description,
+            href: `/recipes/${s}/`,
+            type: "recipes",
+            score: overlap * 10,
+          },
+          `recipes:${s}`
+        );
+    }
+  }
+}
+
+// Group, sort, and limit
+const MAX_PER_GROUP = 4;
+const groups = [
+  {
+    label: "原理",
+    items: items
+      .filter((i) => i.type === "principles")
+      .sort((a, b) => b.score - a.score)
+      .slice(0, MAX_PER_GROUP),
+  },
+  {
+    label: "菜谱 SOP",
+    items: items
+      .filter((i) => i.type === "recipes")
+      .sort((a, b) => b.score - a.score)
+      .slice(0, MAX_PER_GROUP),
+  },
+  {
+    label: "调试",
+    items: items
+      .filter((i) => i.type === "debugging")
+      .sort((a, b) => b.score - a.score)
+      .slice(0, MAX_PER_GROUP),
+  },
+].filter((g) => g.items.length > 0);
+
+const hasContent = groups.length > 0;
+---
+
+{hasContent && (
+  <section class="mt-16 border-t border-gray-800 pt-10">
+    <h2 class="text-xl font-bold text-gray-100 mb-6">
+      <span class="font-mono text-brand-500">#</span> 相关内容
+    </h2>
+
+    {groups.map((group) => (
+      <div class="mb-6 last:mb-0">
+        <h3 class="font-mono text-sm text-gray-500 mb-3">
+          <span class="text-gray-600">//</span> {group.label}
+        </h3>
+        <div class="grid gap-3 sm:grid-cols-2">
+          {group.items.map((item) => (
+            <a
+              href={item.href}
+              class:list={[
+                "group block rounded-lg border border-gray-800 border-l-2 bg-gray-900/30 p-4 transition-all hover:bg-gray-900/60",
+                item.type === "debugging"
+                  ? "border-l-red-500/50"
+                  : item.type === "recipes"
+                    ? "border-l-brand-500/50"
+                    : item.field === "physics"
+                      ? "border-l-blue-500/50"
+                      : item.field === "chemistry"
+                        ? "border-l-amber-500/50"
+                        : item.field === "biology"
+                          ? "border-l-green-500/50"
+                          : "border-l-gray-600",
+              ]}
+            >
+              <h4 class="text-sm font-medium text-gray-200 group-hover:text-brand-400 transition-colors line-clamp-1">
+                {item.title}
+              </h4>
+              <p class="mt-1 text-xs text-gray-500 line-clamp-2">
+                {item.description}
+              </p>
+            </a>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+)}

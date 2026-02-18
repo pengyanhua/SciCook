@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from "@/layouts/ArticleLayout.astro";
+import RelatedContent from "@/components/RelatedContent.astro";
 import { getCollection, render } from "astro:content";
 
 export async function getStaticPaths() {
@@ -12,6 +13,7 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props;
 const { Content } = await render(entry);
+const slug = entry.id.replace(/\.mdx?$/, "");
 ---
 
 <ArticleLayout
@@ -21,4 +23,11 @@ const { Content } = await render(entry);
   date={entry.data.date}
 >
   <Content />
+  <RelatedContent
+    slot="related"
+    collection="principles"
+    slug={slug}
+    relatedRecipes={entry.data.relatedRecipes}
+    ingredientTags={entry.data.ingredientTags}
+  />
 </ArticleLayout>

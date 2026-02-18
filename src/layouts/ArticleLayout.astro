@@ -37,5 +37,8 @@ const tag = field ? fieldLabels[field] : null;
     <div class="prose">
       <slot />
     </div>
+
+    <!-- Related Content (outside prose to avoid style inheritance) -->
+    <slot name="related" />
   </article>
 </BaseLayout>
