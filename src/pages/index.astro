@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Card from "@/components/Card.astro";
+import { getCollection } from "astro:content";
 
 // Hero 代码片段 (避免 JSX 花括号冲突)
 const heroCode = `<span class="text-brand-400">import</span> { 渗透压, 美拉德反应 } <span class="text-brand-400">from</span> <span class="text-amber-400">"物理化学"</span>;
@@ -89,6 +90,103 @@ const modules = [
     eng: "Tools",
     desc: "单位换算器、热力图谱、食材数据库——量化烹饪的辅助工具。",
     href: "/tools/",
+  },
+];
+
+// ── 最近更新 ──────────────────────────────────────────────
+const [allPrinciples, allRecipes, allDebugging] = await Promise.all([
+  getCollection("principles"),
+  getCollection("recipes"),
+  getCollection("debugging"),
+]);
+
+type ContentType = "原理" | "菜谱" | "调试";
+const typeStyle: Record<ContentType, string> = {
+  原理: "text-brand-400 bg-brand-500/10 border-brand-500/20",
+  菜谱: "text-amber-400 bg-amber-500/10 border-amber-500/20",
+  调试: "text-red-400 bg-red-500/10 border-red-500/20",
+};
+
+const recentItems = [
+  ...allPrinciples.map((e) => ({
+    type: "原理" as ContentType,
+    href: `/kernel/${e.slug}`,
+    title: e.data.title,
+    description: e.data.description,
+    date: e.data.date,
+  })),
+  ...allRecipes.map((e) => ({
+    type: "菜谱" as ContentType,
+    href: `/recipes/${e.slug}`,
+    title: e.data.title,
+    description: e.data.description,
+    date: e.data.date,
+  })),
+  ...allDebugging.map((e) => ({
+    type: "调试" as ContentType,
+    href: `/debug/${e.slug}`,
+    title: e.data.title,
+    description: e.data.description,
+    date: e.data.date,
+  })),
+]
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 6);
+
+const fmtDate = (d: string) => {
+  const [, m, day] = d.split("-");
+  return `${parseInt(m)}月${parseInt(day)}日`;
+};
+
+// ── 精选主题 ──────────────────────────────────────────────
+const featuredTopics = [
+  {
+    name: "水饺专题",
+    emoji: "🥟",
+    description: "从拌馅到煮法，拆解饺子的全套科学——面筋网络、渗透压调馅、封口力学。",
+    count: 9,
+    tag: "面食",
+    links: [
+      { label: "饺子（冷水面法）", href: "/recipes/dumplings" },
+      { label: "饺子皮的力学原理", href: "/kernel/dumpling-wrapper-science" },
+      { label: "为什么饺子煮破了？", href: "/debug/why-dumplings-break" },
+    ],
+  },
+  {
+    name: "手擀面专题",
+    emoji: "🍜",
+    description: "宽窄传热、葱油萃取、炸酱干炸——面条世界的物理学与化学。",
+    count: 7,
+    tag: "面食",
+    links: [
+      { label: "面条宽窄与口感物理学", href: "/kernel/noodle-shape-science" },
+      { label: "葱油拌面", href: "/recipes/scallion-oil-noodles" },
+      { label: "炸酱面", href: "/recipes/zhajiang-noodles" },
+    ],
+  },
+  {
+    name: "肥肠专题",
+    emoji: "🫀",
+    description: "吲哚/粪臭素的去除化学 + 爆炒美拉德 + 红烧胶原蛋白水解。",
+    count: 4,
+    tag: "内脏",
+    links: [
+      { label: "去腥的化学原理", href: "/kernel/offal-cleaning-science" },
+      { label: "爆炒肥肠", href: "/recipes/stir-fried-intestines" },
+      { label: "红烧大肠", href: "/recipes/braised-pork-intestines" },
+    ],
+  },
+  {
+    name: "鱼类专题",
+    emoji: "🐟",
+    description: "清蒸、红烧、酸菜鱼……从鱼类蛋白结构到各类烹饪温度窗口全解析。",
+    count: 16,
+    tag: "鱼类",
+    links: [
+      { label: "清蒸鲈鱼", href: "/recipes/steamed-sea-bass" },
+      { label: "水煮鱼", href: "/recipes/sichuan-boiled-fish" },
+      { label: "鱼汤为什么是奶白色？", href: "/kernel/fish-soup-emulsion" },
+    ],
   },
 ];
 ---
@@ -181,6 +279,105 @@ const modules = [
           tag={p.tag}
         />
       ))}
+    </div>
+  </section>
+
+  <!-- Recent Updates Section -->
+  <section class="border-t border-gray-800">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="flex items-end justify-between mb-10">
+        <div>
+          <h2 class="text-2xl font-bold text-gray-100">
+            <span class="font-mono text-brand-500">#</span> 最近更新
+          </h2>
+          <p class="mt-2 text-gray-500">最新发布的原理文章、菜谱和调试指南。</p>
+        </div>
+        <a
+          href="/recipes/"
+          class="hidden sm:inline-flex items-center gap-1 font-mono text-xs text-gray-600 hover:text-brand-400 transition-colors"
+        >
+          查看全部
+          <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+          </svg>
+        </a>
+      </div>
+
+      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {recentItems.map((item) => (
+          <a
+            href={item.href}
+            class="group flex flex-col gap-2 rounded-xl border border-gray-800 bg-gray-900/30 p-4 transition-all hover:border-brand-500/40 hover:bg-gray-900/60"
+          >
+            <div class="flex items-center justify-between">
+              <span
+                class:list={[
+                  "inline-block rounded border px-2 py-0.5 font-mono text-xs",
+                  typeStyle[item.type],
+                ]}
+              >
+                {item.type}
+              </span>
+              <span class="font-mono text-xs text-gray-600">{fmtDate(item.date)}</span>
+            </div>
+            <h3 class="text-sm font-semibold text-gray-200 group-hover:text-brand-400 transition-colors leading-snug">
+              {item.title}
+            </h3>
+            <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">{item.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Topics Section -->
+  <section class="border-t border-gray-800">
+    <div class="mx-auto max-w-6xl px-6 py-20">
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-100">
+          <span class="font-mono text-brand-500">#</span> 精选主题
+        </h2>
+        <p class="mt-2 text-gray-500">以食材或技法为核心，跨菜谱、原理、调试的完整知识群。</p>
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        {featuredTopics.map((topic) => (
+          <div class="group rounded-xl border border-gray-800 bg-gray-900/30 p-6 transition-all hover:border-brand-500/30 hover:bg-gray-900/50">
+            <div class="flex items-start justify-between mb-3">
+              <h3 class="text-lg font-bold text-gray-100 group-hover:text-brand-400 transition-colors">
+                {topic.emoji}&nbsp;{topic.name}
+              </h3>
+              <span class="ml-3 shrink-0 rounded bg-gray-800 px-2 py-0.5 font-mono text-xs text-gray-500">
+                {topic.tag}
+              </span>
+            </div>
+
+            <p class="text-sm text-gray-400 leading-relaxed mb-5">{topic.description}</p>
+
+            <ul class="space-y-1.5 mb-5">
+              {topic.links.map((link) => (
+                <li>
+                  <a
+                    href={link.href}
+                    class="group/link inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-brand-400 transition-colors"
+                  >
+                    <svg class="h-3 w-3 shrink-0 text-brand-600 group-hover/link:text-brand-400 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+                    </svg>
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <div class="border-t border-gray-800 pt-4">
+              <span class="font-mono text-xs text-gray-600">
+                {topic.count} 篇相关内容
+              </span>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
