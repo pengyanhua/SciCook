@@ -1,0 +1,114 @@
+---
+title: "红烧大肠"
+description: "预处理去腥 + 炒糖色 + 小火慢炖，胶原蛋白水解让大肠从腥韧变成软糯鲜香的卤汁科学。"
+category: "炖煮"
+difficulty: 3
+scienceTags: ["胶原蛋白水解", "焦糖化反应", "美拉德反应", "吲哚去腥", "渗透压入味"]
+date: "2026-02-19"
+servings: 3
+totalTimeSec: 7200
+peakTempCelsius: 200
+ingredients:
+  - { name: "猪大肠", amountG: 500, role: "主料", notes: "新鲜，当天购买" }
+  - { name: "食用盐", amountG: 30, unit: "g", role: "调味", notes: "搓洗用，不入菜" }
+  - { name: "面粉", amountG: 40, unit: "g", role: "辅料", notes: "搓洗用，不入菜" }
+  - { name: "白醋", amountG: 30, unit: "ml", role: "调味", notes: "搓洗用，不入菜" }
+  - { name: "冰糖", amountG: 35, unit: "g", role: "调味", notes: "炒糖色用" }
+  - { name: "老抽", amountG: 15, unit: "ml", role: "调味", notes: "上色" }
+  - { name: "生抽", amountG: 25, unit: "ml", role: "调味", notes: "提鲜" }
+  - { name: "料酒", amountG: 40, unit: "ml", role: "调味" }
+  - { name: "生姜", amountG: 25, role: "辅料", notes: "一半焯水，一半切片炒制" }
+  - { name: "大葱", amountG: 40, role: "辅料", notes: "葱白打结" }
+  - { name: "八角", amountG: 3, unit: "g", role: "辅料", notes: "2颗" }
+  - { name: "桂皮", amountG: 3, unit: "g", role: "辅料", notes: "1小段" }
+  - { name: "香叶", amountG: 1, unit: "g", role: "辅料", notes: "2片" }
+  - { name: "干辣椒", amountG: 5, unit: "g", role: "调味", notes: "可选，喜辣加入" }
+  - { name: "食用油", amountG: 15, unit: "ml", role: "调味" }
+  - { name: "开水", amountG: 600, unit: "ml", role: "辅料", notes: "必须是开水" }
+steps:
+  - action: "将猪大肠翻出内壁，冷水冲洗去除内容物"
+    durationSec: 300
+    scienceNote: "暴露内壁，便于后续化学预处理"
+  - action: "加盐 30g 反复揉搓 5 分钟，冲洗；加面粉 40g 揉搓 3 分钟，冲洗；加白醋 30ml 揉搓 2 分钟，冲洗"
+    durationSec: 600
+    scienceNote: "三步去腥：盐搓物理去黏液层，面粉疏水吸附脂溶性腥味分子，醋酸中和碱性三甲胺。顺序不可颠倒"
+  - action: "冷水下锅，加姜片 12g、料酒 20ml，大火煮沸焯水 8 分钟，撇去浮沫，捞出冲洗"
+    durationSec: 480
+    tempCelsius: 100
+    scienceNote: "焯水彻底去除残余腥味蛋白（浮沫形式）和挥发性腥味分子（乙醇共沸蒸馏）。肥肠焯后更容易上色、吸收卤汁"
+  - action: "将焯好的大肠切成 3-4cm 段"
+    durationSec: 120
+  - action: "锅中加油 15ml 和冰糖，小火加热，不断搅拌"
+    durationSec: 60
+    tempCelsius: 150
+    scienceNote: "冰糖纯度高，糖色更透亮。小火控温是关键"
+  - action: "观察糖状态：融化 → 大泡 → 小泡 → 琥珀色，立即下入大肠段，大火翻炒上色"
+    durationSec: 180
+    tempCelsius: 180
+    scienceNote: "焦糖化窗口 170-185°C，超过 200°C 碳化变苦。下肠时肠表面水分急速蒸发降温，精确终止焦糖化。糖包裹在肠表面，后续炖煮中与氨基酸继续发生美拉德反应，赋予红亮色泽"
+  - action: "沿锅边淋入料酒 20ml，大火翻炒 10 秒"
+    durationSec: 10
+    scienceNote: "乙醇在高温锅面瞬间气化，共沸去除最后一轮腥气"
+  - action: "加入老抽，翻炒均匀"
+    durationSec: 20
+    scienceNote: "老抽中的焦糖色和类黑精附着在肠衣表面，赋予深红色泽"
+  - action: "加入姜片 13g、葱结、八角、桂皮、香叶、干辣椒"
+    durationSec: 10
+  - action: "一次性加入 600ml 开水，没过大肠"
+    tempCelsius: 100
+    scienceNote: "必须加开水！冷水会使肠壁表面蛋白质骤然收缩，表面硬化、不易入味。开水保持已有的蛋白质状态"
+  - action: "大火煮沸后转小火，加盖炖煮 60 分钟"
+    durationSec: 3600
+    tempCelsius: 90
+    scienceNote: "这是红烧大肠的核心步骤：大肠壁含有大量胶原蛋白，在 75-85°C 下缓慢水解为明胶。水解需要时间——小火保持微沸（约 90°C），既提供足够温度，又不让大火翻滚破坏肠段结构。明胶是'软糯Q弹'口感的来源"
+  - action: "加入生抽，继续炖煮 15 分钟"
+    durationSec: 900
+    tempCelsius: 90
+    scienceNote: "生抽后加保留谷氨酸的鲜味（久煮会分解）。此时大肠已充分软化，谷氨酸能通过渗透作用快速渗入"
+  - action: "开盖，转大火收汁至浓稠，汤汁能挂在肠段上"
+    durationSec: 600
+    tempCelsius: 100
+    scienceNote: "收汁阶段：水分蒸发、汤汁浓缩，溶出的明胶浓度升高，形成粘稠的包覆感（就像肉冻一样）。收汁还让糖类进一步焦糖化，色泽更深红"
+relatedPrinciples: ["offal-cleaning-science", "sugar-science", "soy-sauce-science", "cooking-wine-science", "ginger-science"]
+ingredientTags: ["猪杂", "肥肠", "内脏"]
+---
+
+## 科学解析
+
+红烧大肠与红烧肉的科学原理高度相似，但有一个关键差异：
+
+### 共同点：胶原蛋白水解
+
+猪大肠壁（特别是外层浆膜和肌层）含有**大量胶原蛋白**，与五花肉的皮层相当。炖煮过程中：
+
+**胶原蛋白 → 明胶**（75-85°C，需要约 60 分钟）
+
+这是红烧大肠"软糯Q弹"而非"硬韧难咬"的根本原因。火候越小、时间越长，水解越充分。
+
+### 与红烧肉的关键差异：预处理优先级
+
+红烧肉的焯水只是辅助去腥，而红烧大肠的**三步预处理（盐→面粉→醋）才是成败关键**。这是因为：
+
+- 猪大肠的腥味分子吲哚和粪臭素浓度远高于猪肉
+- 这两种分子是**脂溶性**的，长时间炖煮反而会从肠壁脂肪中持续释放，掩盖不住
+
+因此，必须在下锅炖煮之前，先通过化学手段把腥味从源头去掉。
+
+### 色泽的双重来源
+
+红烧大肠的红亮色泽来自两步叠加：
+1. **炒糖色** → 焦糖化反应 → 琥珀色底色
+2. **老抽 + 炖煮** → 美拉德反应 → 红亮色泽与类黑精
+
+---
+
+## 调试指南
+
+| 问题 | 原因 | 修复 |
+|------|------|------|
+| 炖好后还有腥味 | 预处理不到位 | 三步法（盐→面粉→醋）必须全做，再充分焯水 |
+| 大肠炖不烂 | 炖煮时间不够 / 火太大 | 小火（微沸 90°C）至少炖 60 分钟 |
+| 颜色不够红亮 | 糖色没炒好 / 老抽不足 | 糖色要炒至琥珀色，老抽按量加 |
+| 糖色焦苦 | 炒糖时火大 / 没及时下肠 | 全程小火，小泡出现立刻下肠段 |
+| 汤汁太稀 | 收汁阶段时间不够 | 开盖大火收到浓稠，至少 8-10 分钟 |
+| 入口发柴发硬 | 加了冷水 / 大火炖 | 必须加开水，全程小火微沸 |
