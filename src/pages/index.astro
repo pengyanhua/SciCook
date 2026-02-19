@@ -272,71 +272,71 @@ const featuredTopics = [
     </div>
   </section>
 
-  <!-- Principles Section -->
+  <!-- Recent Updates Section -->
   <section class="mx-auto max-w-6xl px-6 py-20">
-    <div class="mb-10">
-      <h2 class="text-2xl font-bold text-gray-100">
-        <span class="font-mono text-brand-500">#</span> 底层原理精选
-      </h2>
-      <p class="mt-2 text-gray-500">用科学解释传统经验，每一个 "为什么" 都有答案。</p>
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <h2 class="text-2xl font-bold text-gray-100">
+          <span class="font-mono text-brand-500">#</span> 最近更新
+        </h2>
+        <p class="mt-2 text-gray-500">最新发布的原理文章、菜谱和调试指南。</p>
+      </div>
+      <a
+        href="/recipes/"
+        class="hidden sm:inline-flex items-center gap-1 font-mono text-xs text-gray-600 hover:text-brand-400 transition-colors"
+      >
+        查看全部
+        <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+        </svg>
+      </a>
     </div>
 
-    <div class="grid gap-4 sm:grid-cols-2">
-      {principles.map((p) => (
-        <Card
-          title={p.title}
-          description={p.description}
-          href={p.href}
-          field={p.field}
-          tag={p.tag}
-        />
+    <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+      {recentItems.map((item) => (
+        <a
+          href={item.href}
+          class="group flex flex-col gap-2 rounded-xl border border-gray-800 bg-gray-900/30 p-4 transition-all hover:border-brand-500/40 hover:bg-gray-900/60"
+        >
+          <div class="flex items-center justify-between">
+            <span
+              class:list={[
+                "inline-block rounded border px-2 py-0.5 font-mono text-xs",
+                typeStyle[item.type],
+              ]}
+            >
+              {item.type}
+            </span>
+            <span class="font-mono text-xs text-gray-600">{fmtDate(item.date)}</span>
+          </div>
+          <h3 class="text-sm font-semibold text-gray-200 group-hover:text-brand-400 transition-colors leading-snug">
+            {item.title}
+          </h3>
+          <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">{item.description}</p>
+        </a>
       ))}
     </div>
   </section>
 
-  <!-- Recent Updates Section -->
+  <!-- Principles Section -->
   <section class="border-t border-gray-800">
     <div class="mx-auto max-w-6xl px-6 py-20">
-      <div class="flex items-end justify-between mb-10">
-        <div>
-          <h2 class="text-2xl font-bold text-gray-100">
-            <span class="font-mono text-brand-500">#</span> 最近更新
-          </h2>
-          <p class="mt-2 text-gray-500">最新发布的原理文章、菜谱和调试指南。</p>
-        </div>
-        <a
-          href="/recipes/"
-          class="hidden sm:inline-flex items-center gap-1 font-mono text-xs text-gray-600 hover:text-brand-400 transition-colors"
-        >
-          查看全部
-          <svg class="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-          </svg>
-        </a>
+      <div class="mb-10">
+        <h2 class="text-2xl font-bold text-gray-100">
+          <span class="font-mono text-brand-500">#</span> 底层原理精选
+        </h2>
+        <p class="mt-2 text-gray-500">用科学解释传统经验，每一个 "为什么" 都有答案。</p>
       </div>
 
-      <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {recentItems.map((item) => (
-          <a
-            href={item.href}
-            class="group flex flex-col gap-2 rounded-xl border border-gray-800 bg-gray-900/30 p-4 transition-all hover:border-brand-500/40 hover:bg-gray-900/60"
-          >
-            <div class="flex items-center justify-between">
-              <span
-                class:list={[
-                  "inline-block rounded border px-2 py-0.5 font-mono text-xs",
-                  typeStyle[item.type],
-                ]}
-              >
-                {item.type}
-              </span>
-              <span class="font-mono text-xs text-gray-600">{fmtDate(item.date)}</span>
-            </div>
-            <h3 class="text-sm font-semibold text-gray-200 group-hover:text-brand-400 transition-colors leading-snug">
-              {item.title}
-            </h3>
-            <p class="text-xs text-gray-500 line-clamp-2 leading-relaxed">{item.description}</p>
-          </a>
+      <div class="grid gap-4 sm:grid-cols-2">
+        {principles.map((p) => (
+          <Card
+            title={p.title}
+            description={p.description}
+            href={p.href}
+            field={p.field}
+            tag={p.tag}
+          />
         ))}
       </div>
     </div>
