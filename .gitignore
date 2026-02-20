@@ -17,8 +17,9 @@ node_modules/
 .env.*
 !.env.example
 
-# claude
-.claude/
+# claude (保留 skills，忽略本地设置)
+.claude/*
+!.claude/skills/
 
 # editor
 .vscode/
