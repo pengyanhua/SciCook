@@ -55,9 +55,9 @@ frontmatter `---` 之后必须包含：
 
 ### 5. 验证 & 发布
 
-1. 运行 `npm run build` 确认无报错
-2. 自动执行发布流程（等同于 `/deploy`）：
-   - `git add` 新增的菜谱文件（按文件名添加）
-   - 生成 commit message（`feat:` 前缀 + 中文描述），用 HEREDOC 格式，末尾附 `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>`
-   - `git push origin main`
-   - `gh run list --limit 1` 查看部署状态并报告给用户
+1. `git add` 新增的菜谱文件（按文件名添加）
+2. 生成 commit message（`feat:` 前缀 + 中文描述），用 HEREDOC 格式，末尾附 `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>`
+3. `git push origin main`
+4. `npm run build` 本地构建，如果失败则停止并修复
+5. `npx wrangler pages deploy dist --project-name=scicook` 手动发布到 Cloudflare Pages
+6. 向用户报告部署 URL
