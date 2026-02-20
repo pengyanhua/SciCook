@@ -74,6 +74,13 @@ argument-hint: <食材名称，如"鸡肉"、"豆腐">
 - scienceNote 必须有实质性科学解释（温度、化学反应、物理原理），不能是空话
 - 每道菜的 `category` 必须是 schema 允许的 8 个值之一
 
-### 4. 验证
+### 4. 验证 & 发布
 
-所有文件创建完成后运行 `npm run build` 确认无报错。
+所有文件创建完成后：
+
+1. 运行 `npm run build` 确认无报错
+2. 自动执行发布流程（等同于 `/deploy`）：
+   - `git add` 所有新增/修改的文件（按文件名逐个添加，不用 `git add -A`）
+   - 生成 commit message（`feat:` 前缀 + 中文描述），用 HEREDOC 格式，末尾附 `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>`
+   - `git push origin main`
+   - `gh run list --limit 1` 查看部署状态并报告给用户

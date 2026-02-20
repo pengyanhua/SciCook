@@ -53,6 +53,11 @@ frontmatter `---` 之后必须包含：
 - 检查是否有对应的原理文章，如有则在 `relatedPrinciples` 中引用
 - 正文中的 `<` `>` 必须转义为 `&lt;` `&gt;`
 
-### 5. 验证
+### 5. 验证 & 发布
 
-运行 `npm run build` 确认无报错。
+1. 运行 `npm run build` 确认无报错
+2. 自动执行发布流程（等同于 `/deploy`）：
+   - `git add` 新增的菜谱文件（按文件名添加）
+   - 生成 commit message（`feat:` 前缀 + 中文描述），用 HEREDOC 格式，末尾附 `Co-Authored-By: Claude Opus 4.6 <noreply@anthropic.com>`
+   - `git push origin main`
+   - `gh run list --limit 1` 查看部署状态并报告给用户
