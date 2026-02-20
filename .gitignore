@@ -21,6 +21,11 @@ node_modules/
 .claude/*
 !.claude/skills/
 
+# windsurf (保留配置，忽略本地设置)
+.windsurf/*
+!.windsurf/rules.md
+!.windsurf/workflows/
+
 # editor
 .vscode/
 .idea/
