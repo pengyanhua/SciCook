@@ -6,9 +6,11 @@ interface Props {
   description?: string;
   field?: "physics" | "chemistry" | "biology";
   date?: string;
+  type?: string;
+  jsonLd?: Record<string, unknown>;
 }
 
-const { title, description, field, date } = Astro.props;
+const { title, description, field, date, type = "article", jsonLd } = Astro.props;
 
 const fieldLabels: Record<string, { label: string; class: string }> = {
   physics: { label: "物理 Physics", class: "tag-physics" },
@@ -19,7 +21,8 @@ const fieldLabels: Record<string, { label: string; class: string }> = {
 const tag = field ? fieldLabels[field] : null;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout title={title} description={description} type={type}>
+  {jsonLd && <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
   <article class="mx-auto max-w-3xl px-6 py-12">
     <!-- Article Header -->
     <header class="mb-10">

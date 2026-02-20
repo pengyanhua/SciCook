@@ -216,6 +216,18 @@ const featuredTopics = [
 ---
 
 <BaseLayout title="首页">
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "理科生下厨房 SciCook",
+    url: "https://scicook.com",
+    description: "拒绝玄学，烹饪是一门精确的科学。用物理、化学、生物学原理解构每一道菜。",
+    potentialAction: {
+      "@type": "SearchAction",
+      target: "https://scicook.com/?q={search_term_string}",
+      "query-input": "required name=search_term_string",
+    },
+  })} />
   <!-- Hero Section -->
   <section class="relative overflow-hidden">
     <!-- Background grid effect -->

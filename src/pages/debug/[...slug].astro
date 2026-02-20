@@ -14,6 +14,24 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await render(entry);
 const slug = entry.id.replace(/\.mdx?$/, "");
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: entry.data.title,
+  description: entry.data.description,
+  datePublished: entry.data.date,
+  author: { "@type": "Organization", name: "理科生下厨房 SciCook" },
+  publisher: {
+    "@type": "Organization",
+    name: "理科生下厨房 SciCook",
+    url: "https://scicook.com",
+  },
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": `https://scicook.com/debug/${slug}`,
+  },
+};
 ---
 
 <ArticleLayout
@@ -21,6 +39,7 @@ const slug = entry.id.replace(/\.mdx?$/, "");
   description={entry.data.description}
   field={entry.data.field}
   date={entry.data.date}
+  jsonLd={jsonLd}
 >
   <!-- Bug report header -->
   <div class="not-prose mb-8 rounded-lg border border-red-500/20 bg-red-500/5 p-4 font-mono text-sm">
