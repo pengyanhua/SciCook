@@ -32,6 +32,16 @@ const jsonLd = {
     "@id": `https://scicook.com/kernel/${slug}`,
   },
 };
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "首页", item: "https://scicook.com/" },
+    { "@type": "ListItem", position: 2, name: "底层原理", item: "https://scicook.com/kernel/" },
+    { "@type": "ListItem", position: 3, name: entry.data.title, item: `https://scicook.com/kernel/${slug}` },
+  ],
+};
 ---
 
 <ArticleLayout
@@ -40,6 +50,7 @@ const jsonLd = {
   field={entry.data.field}
   date={entry.data.date}
   jsonLd={jsonLd}
+  breadcrumbLd={breadcrumbLd}
 >
   <Content />
   <RelatedContent

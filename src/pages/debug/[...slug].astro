@@ -32,6 +32,16 @@ const jsonLd = {
     "@id": `https://scicook.com/debug/${slug}`,
   },
 };
+
+const breadcrumbLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "首页", item: "https://scicook.com/" },
+    { "@type": "ListItem", position: 2, name: "调试区", item: "https://scicook.com/debug/" },
+    { "@type": "ListItem", position: 3, name: entry.data.title, item: `https://scicook.com/debug/${slug}` },
+  ],
+};
 ---
 
 <ArticleLayout
@@ -40,6 +50,7 @@ const jsonLd = {
   field={entry.data.field}
   date={entry.data.date}
   jsonLd={jsonLd}
+  breadcrumbLd={breadcrumbLd}
 >
   <!-- Bug report header -->
   <div class="not-prose mb-8 rounded-lg border border-red-500/20 bg-red-500/5 p-4 font-mono text-sm">
